@@ -3,768 +3,3380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#073b2a">
-<meta name="description" content="Dulle Wala Connect — دلے والا کے کاروبار، نوکریاں، خدمات اور مقامی معلومات">
+
 <title>Dulle Wala Connect | دلے والا کنیکٹ</title>
 
+<meta name="description" content="Dulle Wala Connect — دلے والا کے کاروبار، خدمات، نوکریاں، تعلیم، صحت اور کمیونٹی معلومات کا جدید پلیٹ فارم۔">
+<meta name="theme-color" content="#050505">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---green:#073b2a;
---green2:#0c5b40;
---gold:#d5ad55;
---cream:#fffaf0;
---white:#fff;
---ink:#18251e;
---muted:#66736b;
---border:#e9dfc9;
---red:#c0392b;
---shadow:0 10px 30px #073b2a17;
+  --black:#050505;
+  --black2:#0d0d0d;
+  --black3:#151515;
+  --gold:#d4af37;
+  --gold2:#f4d36a;
+  --gold3:#9d781b;
+  --white:#ffffff;
+  --cream:#f8f3e7;
+  --gray:#bdbdbd;
+  --green:#0b3d2e;
+  --green2:#145a42;
+  --danger:#b91c1c;
+  --shadow:0 18px 50px rgba(0,0,0,.45);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-margin:0;background:var(--cream);color:var(--ink);
-font-family:'Jameel Noori Nastaleeq Kasheeda','Jameel Noori Nastaleeq','Noto Nastaliq Urdu',serif;
-font-weight:700;line-height:2.15;
+  background:
+    radial-gradient(circle at top,#242018 0%,#080808 35%,#030303 100%);
+  color:var(--white);
+  font-family:'Cairo',sans-serif;
+  overflow-x:hidden;
 }
-button,input,select,textarea{font:inherit}
-b,strong,h1,h2,h3,h4,label,.btn{font-weight:900}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer}
-.container{width:min(1160px,92%);margin:auto}
-p,li{font-size:16px}
-section{scroll-margin-top:90px}
-.topbar{background:#052a1e;color:white;padding:6px 0;font-size:13px}
-.topbar .container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-header{position:sticky;top:0;z-index:50;background:#fffaf0f5;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
-.brand{display:flex;align-items:center;gap:10px;color:var(--green);font-family:'Cairo',sans-serif;font-weight:900;direction:ltr;line-height:1.4}
-.logo{width:52px;height:52px;border-radius:15px;background:var(--green);color:var(--gold);border:2px solid var(--gold);display:grid;place-items:center;font-size:20px;box-shadow:var(--shadow)}
-.brand small{display:block;font-family:'Jameel Noori Nastaleeq Kasheeda','Jameel Noori Nastaleeq',serif;direction:rtl;text-align:right;font-size:13px;color:var(--muted)}
-.navlinks{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:900}
-.navlinks a:hover{color:#a67d29}
-.menu-btn{display:none;background:var(--green);color:white;border:0;border-radius:10px;padding:8px 12px}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;border:0;border-radius:12px;padding:10px 16px;font-size:14px;font-weight:900;transition:.25s}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--green);color:white}
-.btn-gold{background:var(--gold);color:#18251e}
-.btn-white{background:white;color:var(--green)}
-.btn-outline{border:1px solid var(--border);background:white;color:var(--green)}
-.btn-danger{background:#ffebe8;color:#a93226}
-.hero{position:relative;overflow:hidden;padding:58px 0;color:white;background:radial-gradient(ellipse at 90% 15%,#226f4e,transparent 35%),linear-gradient(130deg,#052a1e,#073b2a 60%,#124f38)}
-.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}
-.eyebrow{display:inline-block;border:1px solid #d5ad5577;color:var(--gold);padding:4px 12px;border-radius:30px;font-size:13px}
-.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.6;margin:12px 0}
-.hero h1 span{color:var(--gold)}
-.hero p{color:#e0ece5}
-.hero-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
-.hero-card{background:#ffffff0d;border:1px solid #d5ad5555;border-radius:24px;padding:22px;text-align:center}
-.hero-emblem{font-size:65px;line-height:1.5}
-.hero-card h3{color:var(--gold);font-family:'Cairo',sans-serif}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.stat{background:#ffffff10;border-radius:12px;padding:10px;text-align:center}
-.stat strong{display:block;color:var(--gold);font-size:21px}
-.stat span{font-size:13px}
-.section{padding:48px 0;opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
-.section.visible{opacity:1;transform:translateY(0)}
-.section-white{background:white}
-.section-head{text-align:center;margin-bottom:25px}
-.section-head .mini{font-family:'Cairo',sans-serif;color:#9b762b;font-size:12px;font-weight:900;direction:ltr}
-.section-head h2{color:var(--green);font-size:clamp(25px,3vw,35px);margin:3px 0;line-height:1.8}
-.section-head p{color:var(--muted);margin:0}
-.all-sections-box{background:linear-gradient(135deg,#073b2a,#0c5b40);color:white;border:2px solid var(--gold);border-radius:18px;padding:18px;margin:18px auto;text-align:center;box-shadow:var(--shadow)}
-.all-sections-box strong{display:block;color:#f4d58c;font-size:23px}
-.all-section-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-.all-section-links a{background:white;color:var(--green);border-radius:10px;padding:6px 12px;font-size:14px;font-weight:900}
-.all-section-links a:hover{background:var(--gold)}
-.search-panel{background:white;padding:16px;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);margin-top:-20px;position:relative;z-index:4}
-.search-row{display:grid;grid-template-columns:1fr 210px auto;gap:9px}
-input,select,textarea{width:100%;padding:11px 12px;border:1px solid #ddd7c8;border-radius:10px;background:white;color:var(--ink);outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d5ad5520}
-textarea{min-height:90px;resize:vertical}
-.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
-.field label{font-size:15px;color:var(--green)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
-.full{grid-column:1/-1}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.category{background:white;border:1px solid var(--border);border-radius:16px;padding:17px 8px;text-align:center;transition:.25s}
-.category:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow)}
-.category .emoji{font-size:29px}
-.category strong{display:block;color:var(--green);font-size:17px}
-.category small{font-family:'Cairo',sans-serif;font-size:10px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.card,.form-card,.info-tile,.about-box{background:white;border:1px solid var(--border);border-radius:17px;padding:19px;box-shadow:0 5px 18px #073b2a08;min-width:0}
-.card h3{color:var(--green);font-size:20px;margin:5px 0;overflow-wrap:anywhere}
-.card p{font-size:15px;color:#56645b;white-space:pre-wrap;overflow-wrap:anywhere}
-.card .meta{font-size:14px;color:var(--muted);margin:5px 0}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.pill{display:inline-block;background:#eaf4ec;color:#17643f;padding:3px 10px;border-radius:30px;font-size:13px}
-.empty{grid-column:1/-1;text-align:center;padding:25px;border:1px dashed #d8c9a6;border-radius:15px;color:var(--muted);background:white}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-.form-card h3{color:var(--green);margin-top:0}
-.notice-list{display:grid;gap:13px}
-.notice-card{background:white;border:1px solid var(--border);border-right:4px solid var(--gold);padding:16px;border-radius:13px}
-.notice-card h3{color:var(--green);margin:0;font-size:19px}
-.notice-card p{white-space:pre-wrap}
-.emergency-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.emergency{border-radius:18px;padding:20px;color:white;background:linear-gradient(135deg,#a72c27,#d84c3d);display:flex;justify-content:space-between;align-items:center;gap:12px}
-.emergency.police{background:linear-gradient(135deg,#073b2a,#14784e)}
-.emergency strong{font-family:'Cairo',sans-serif;font-size:28px}
-.emergency .btn{background:white;color:var(--green)}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.info-tile h3{color:var(--green);margin-top:0}
-.info-tile p{font-size:15px;color:#56645b}
-.list-clean{padding-right:23px}
-.list-clean li{margin:5px 0}
-.contact-card{background:linear-gradient(135deg,#073b2a,#0c5b40);color:white;border:2px solid var(--gold);border-radius:20px;padding:25px}
-.contact-card h3{color:var(--gold);font-size:25px}
-.contact-card p{font-size:17px}
-footer{background:#052a1e;color:white;padding:30px 0 15px}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
-footer h3,footer h4{color:var(--gold)}
-footer p,footer a{color:#d4e2d9;font-size:14px}
-.footer-links{display:grid;gap:6px}
-.footer-bottom{border-top:1px solid #ffffff20;margin-top:20px;padding-top:13px;text-align:center;font-size:13px}
-.float-wa{position:fixed;left:15px;bottom:16px;z-index:60;background:#159b55;color:white;padding:11px 16px;border-radius:50px;font-weight:900;box-shadow:0 6px 25px #0002}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,150%);opacity:0;z-index:200;background:var(--green);color:white;padding:12px 18px;border-radius:13px;max-width:90%;transition:.3s}
-.toast.show{transform:translate(-50%,0);opacity:1}
-.modal{display:none;position:fixed;inset:0;background:#0009;z-index:150;align-items:center;justify-content:center;padding:15px}
-.modal.show{display:flex}
-.modal-box{width:min(600px,100%);max-height:90vh;overflow:auto;background:var(--cream);border-radius:20px;padding:20px}
-.modal-head{display:flex;justify-content:space-between;align-items:center}
-.close-btn{border:0;border-radius:9px;padding:7px 12px}
-.admin-area{display:none}
-.admin-area.show{display:block}
-.admin-record{background:white;border:1px solid var(--border);padding:14px;border-radius:12px;margin-bottom:10px}
-.admin-record p{white-space:pre-wrap;overflow-wrap:anywhere}
-.admin-actions{display:flex;flex-wrap:wrap;gap:7px}
-.small-btn{border:0;border-radius:8px;padding:7px 10px;font-size:13px;font-weight:900}
-.small-green{background:#e4f5e9;color:#17643f}
-.small-red{background:#ffebe8;color:#a93226}
-.small-gray{background:#eee;color:#333}
-.hidden{display:none!important}
-@media(max-width:950px){.navlinks{gap:7px;font-size:12px}.hero-grid{grid-template-columns:1fr}.hero-card{display:none}}
-@media(max-width:800px){.navlinks{display:none;position:absolute;top:100%;right:0;left:0;background:var(--cream);padding:16px 5%;border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.menu-btn{display:block}.cards{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.section{padding:35px 0}.hero{padding:40px 0}.hero h1{font-size:34px}.search-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(2,1fr)}.cards,.two-col,.info-grid,.footer-grid,.emergency-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.brand{font-size:12px}.form-card{padding:16px}}
+
+body.lock{
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================================================
+   OPENING
+========================================================= */
+
+#opening{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at center,rgba(212,175,55,.12),transparent 35%),
+    linear-gradient(135deg,#000,#090909 55%,#17130a);
+  transition:opacity .8s ease,visibility .8s ease;
+}
+
+#opening.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.opening-inner{
+  width:min(92%,650px);
+  padding:35px 20px;
+  animation:openingIn 1.4s ease;
+}
+
+@keyframes openingIn{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.92);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.opening-logo{
+  width:min(72vw,340px);
+  max-height:340px;
+  object-fit:contain;
+  border-radius:28px;
+  filter:
+    drop-shadow(0 0 18px rgba(212,175,55,.35))
+    drop-shadow(0 20px 35px rgba(0,0,0,.8));
+  margin-bottom:22px;
+}
+
+.opening-line{
+  width:100px;
+  height:3px;
+  margin:8px auto 20px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.opening-title{
+  color:var(--gold2);
+  font-size:clamp(30px,8vw,62px);
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.opening-urdu{
+  margin-top:5px;
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:clamp(25px,6vw,42px);
+  color:#fff;
+}
+
+.opening-build{
+  margin-top:18px;
+  color:#fff;
+  font-size:clamp(16px,4vw,23px);
+  font-weight:700;
+}
+
+.opening-build span{
+  color:var(--gold2);
+}
+
+.opening-tag{
+  margin-top:12px;
+  color:#aaa;
+  font-size:13px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:5000;
+  background:rgba(4,4,4,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,175,55,.35);
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+
+.nav{
+  width:min(1250px,94%);
+  margin:auto;
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.brand img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  border-radius:14px;
+  filter:drop-shadow(0 0 8px rgba(212,175,55,.35));
+}
+
+.brand-text{
+  min-width:0;
+}
+
+.brand-title{
+  font-size:19px;
+  font-weight:900;
+  color:var(--gold2);
+  white-space:nowrap;
+}
+
+.brand-sub{
+  color:#aaa;
+  font-size:10px;
+  white-space:nowrap;
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.menu a{
+  padding:9px 12px;
+  border-radius:10px;
+  color:#ddd;
+  font-size:12px;
+  transition:.25s;
+}
+
+.menu a:hover{
+  background:rgba(212,175,55,.1);
+  color:var(--gold2);
+}
+
+.menu-btn{
+  display:none;
+  width:46px;
+  height:46px;
+  border:1px solid rgba(212,175,55,.4);
+  border-radius:12px;
+  background:#111;
+  color:var(--gold2);
+  font-size:24px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  position:relative;
+  min-height:calc(100vh - 76px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+    radial-gradient(circle at 50% 20%,rgba(212,175,55,.18),transparent 45%);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  border:1px solid rgba(212,175,55,.15);
+  border-radius:50%;
+  animation:rotate 30s linear infinite;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:850px;
+  height:850px;
+  border:1px solid rgba(212,175,55,.07);
+  border-radius:50%;
+}
+
+@keyframes rotate{
+  to{transform:rotate(360deg)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:min(1100px,94%);
+  text-align:center;
+  padding:70px 10px;
+}
+
+.hero-logo{
+  width:min(300px,65vw);
+  margin-bottom:20px;
+  filter:
+    drop-shadow(0 0 25px rgba(212,175,55,.25))
+    drop-shadow(0 20px 30px rgba(0,0,0,.8));
+  animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+.hero h1{
+  font-size:clamp(38px,8vw,85px);
+  line-height:1;
+  font-weight:900;
+  color:var(--white);
+}
+
+.hero h1 span{
+  color:var(--gold2);
+}
+
+.hero-urdu{
+  font-family:'Noto Nastaliq Urdu',serif;
+  color:#eee;
+  font-size:clamp(25px,5vw,42px);
+  margin-top:15px;
+}
+
+.hero-desc{
+  max-width:850px;
+  margin:18px auto 0;
+  color:#c7c7c7;
+  line-height:2;
+  font-size:15px;
+}
+
+.hero-buttons{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  border:1px solid var(--gold);
+  padding:13px 22px;
+  border-radius:14px;
+  font-weight:800;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.btn-gold{
+  color:#080808;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  box-shadow:0 10px 30px rgba(212,175,55,.18);
+}
+
+.btn-dark{
+  background:#111;
+  color:var(--gold2);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+  width:min(1200px,94%);
+  margin:0 auto;
+  padding:85px 0;
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-kicker{
+  color:var(--gold2);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.section-head h2{
+  margin-top:8px;
+  font-size:clamp(29px,5vw,48px);
+  font-weight:900;
+}
+
+.section-head h2 span{
+  color:var(--gold2);
+}
+
+.section-head p{
+  margin:10px auto 0;
+  color:#aaa;
+  max-width:750px;
+  line-height:1.9;
+  font-size:14px;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.stat{
+  padding:25px 15px;
+  text-align:center;
+  border:1px solid rgba(212,175,55,.22);
+  border-radius:20px;
+  background:linear-gradient(145deg,#111,#080808);
+  box-shadow:var(--shadow);
+}
+
+.stat-icon{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.stat strong{
+  display:block;
+  color:var(--gold2);
+  font-size:28px;
+}
+
+.stat span{
+  color:#aaa;
+  font-size:12px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px;
+}
+
+.card{
+  background:linear-gradient(145deg,#121212,#080808);
+  border:1px solid rgba(212,175,55,.22);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  color:var(--gold2);
+  margin-bottom:13px;
+  font-size:22px;
+}
+
+.card p{
+  color:#c7c7c7;
+  line-height:2.1;
+  font-size:14px;
+}
+
+.urdu{
+  font-family:'Noto Nastaliq Urdu',serif;
+  line-height:2.5 !important;
+}
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.category{
+  position:relative;
+  overflow:hidden;
+  padding:25px 15px;
+  min-height:170px;
+  text-align:center;
+  border-radius:22px;
+  border:1px solid rgba(212,175,55,.25);
+  background:
+    radial-gradient(circle at top,rgba(212,175,55,.1),transparent 50%),
+    #0b0b0b;
+  transition:.3s;
+}
+
+.category:hover{
+  transform:translateY(-7px);
+  border-color:var(--gold);
+  box-shadow:0 18px 40px rgba(212,175,55,.1);
+}
+
+.category-icon{
+  width:68px;
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 12px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,.4);
+  background:#141414;
+  font-size:30px;
+}
+
+.category h3{
+  color:#fff;
+  font-size:16px;
+}
+
+.category p{
+  color:#999;
+  font-size:11px;
+  margin-top:4px;
+}
+
+/* =========================================================
+   INFO GRID
+========================================================= */
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.info-card{
+  border:1px solid rgba(212,175,55,.2);
+  background:#0d0d0d;
+  border-radius:20px;
+  padding:22px;
+}
+
+.info-card .icon{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.info-card h3{
+  color:var(--gold2);
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.info-card p{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.9;
+}
+
+/* =========================================================
+   SCHOOLS
+========================================================= */
+
+.school-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
+
+.school{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px;
+  background:#0e0e0e;
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:17px;
+}
+
+.school-icon{
+  width:48px;
+  height:48px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--gold),#8d6a18);
+  color:#000;
+  font-size:22px;
+}
+
+.school strong{
+  display:block;
+  color:#eee;
+  font-size:14px;
+}
+
+.school span{
+  color:#888;
+  font-size:11px;
+}
+
+/* =========================================================
+   COMMUNITY
+========================================================= */
+
+.community-box{
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:25px;
+  padding:35px;
+  background:
+    linear-gradient(rgba(8,8,8,.9),rgba(8,8,8,.95)),
+    radial-gradient(circle at 20% 10%,rgba(212,175,55,.18),transparent 35%);
+  text-align:center;
+}
+
+.community-box h3{
+  font-size:30px;
+  color:var(--gold2);
+}
+
+.community-box p{
+  color:#aaa;
+  line-height:2;
+  margin-top:10px;
+}
+
+.tags{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:22px;
+}
+
+.tag{
+  border:1px solid rgba(212,175,55,.35);
+  color:#ddd;
+  background:#111;
+  border-radius:100px;
+  padding:8px 14px;
+  font-size:12px;
+}
+
+/* =========================================================
+   FIREBASE PUBLIC SUBMISSION
+========================================================= */
+
+.form-box{
+  max-width:850px;
+  margin:auto;
+  background:#0b0b0b;
+  border:1px solid rgba(212,175,55,.22);
+  border-radius:25px;
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  color:#ddd;
+  font-size:12px;
+  font-weight:700;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  background:#151515;
+  border:1px solid #2b2b2b;
+  color:#fff;
+  outline:none;
+  border-radius:12px;
+  padding:13px 14px;
+  font-size:13px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:var(--gold);
+}
+
+.field textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.form-actions{
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.notice{
+  margin-top:15px;
+  padding:12px;
+  border-radius:12px;
+  background:#151515;
+  color:#aaa;
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   APPROVED LISTINGS
+========================================================= */
+
+.listings{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.listing{
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:20px;
+  background:#0c0c0c;
+  padding:22px;
+}
+
+.listing-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.listing-icon{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  background:#171717;
+  font-size:22px;
+}
+
+.badge{
+  color:#0a0a0a;
+  background:var(--gold2);
+  padding:5px 9px;
+  border-radius:100px;
+  font-size:9px;
+  font-weight:900;
+}
+
+.listing h3{
+  color:#fff;
+  margin-top:15px;
+  font-size:18px;
+}
+
+.listing p{
+  color:#999;
+  font-size:12px;
+  line-height:1.9;
+  margin-top:6px;
+}
+
+.listing .contact{
+  margin-top:13px;
+  color:var(--gold2);
+  font-size:12px;
+  direction:ltr;
+  text-align:left;
+}
+
+/* =========================================================
+   EMERGENCY
+========================================================= */
+
+.emergency{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.emergency-card{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:24px;
+  background:linear-gradient(145deg,#160808,#0b0b0b);
+  text-align:center;
+}
+
+.emergency-card strong{
+  display:block;
+  font-size:38px;
+  color:#ff6464;
+}
+
+.emergency-card span{
+  color:#ddd;
+  font-size:13px;
+}
+
+.emergency-card a{
+  display:inline-block;
+  margin-top:12px;
+  color:#fff;
+  background:#a71919;
+  padding:8px 18px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:20px;
+}
+
+.profile{
+  text-align:center;
+}
+
+.profile-logo{
+  width:125px;
+  height:125px;
+  object-fit:contain;
+  border-radius:25px;
+  margin-bottom:15px;
+}
+
+.profile h3{
+  color:var(--gold2);
+  font-size:25px;
+}
+
+.profile .role{
+  color:#999;
+  margin-top:4px;
+}
+
+.contact-details{
+  margin-top:22px;
+  display:grid;
+  gap:10px;
+  text-align:right;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  background:#111;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.contact-item b{
+  color:var(--gold2);
+  font-size:18px;
+}
+
+.contact-item div{
+  min-width:0;
+}
+
+.contact-item strong{
+  display:block;
+  color:#ddd;
+  font-size:12px;
+}
+
+.contact-item span{
+  color:#999;
+  font-size:11px;
+}
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.socials{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.social{
+  padding:11px 17px;
+  border-radius:12px;
+  background:#111;
+  border:1px solid rgba(212,175,55,.25);
+  color:#ddd;
+  font-size:12px;
+  transition:.25s;
+}
+
+.social:hover{
+  color:var(--gold2);
+  transform:translateY(-3px);
+}
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+.admin-box{
+  background:#0b0b0b;
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:25px;
+  padding:28px;
+}
+
+.admin-status{
+  padding:13px;
+  background:#111;
+  border-radius:12px;
+  color:#999;
+  font-size:12px;
+  margin-top:12px;
+}
+
+.admin-list{
+  display:grid;
+  gap:12px;
+  margin-top:20px;
+}
+
+.admin-item{
+  border:1px solid #222;
+  background:#101010;
+  border-radius:15px;
+  padding:16px;
+}
+
+.admin-item h4{
+  color:var(--gold2);
+}
+
+.admin-item p{
+  color:#aaa;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.admin-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.small-btn{
+  border:0;
+  border-radius:9px;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.approve{
+  background:#14532d;
+  color:#fff;
+}
+
+.reject{
+  background:#7f1d1d;
+  color:#fff;
+}
+
+.delete{
+  background:#27272a;
+  color:#fff;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  margin-top:40px;
+  padding:55px 20px 25px;
+  background:
+    radial-gradient(circle at top,rgba(212,175,55,.09),transparent 40%),
+    #050505;
+  border-top:1px solid rgba(212,175,55,.25);
+  text-align:center;
+}
+
+.footer-logo{
+  width:95px;
+  height:95px;
+  object-fit:contain;
+  border-radius:20px;
+  margin-bottom:15px;
+}
+
+.footer-title{
+  font-size:24px;
+  font-weight:900;
+  color:var(--gold2);
+}
+
+.footer-urdu{
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:20px;
+  margin-top:4px;
+}
+
+.build{
+  margin-top:20px;
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:100px;
+  border:1px solid rgba(212,175,55,.35);
+  color:#bbb;
+  font-size:12px;
+}
+
+.build strong{
+  color:var(--gold2);
+}
+
+.copyright{
+  margin-top:22px;
+  color:#666;
+  font-size:10px;
+}
+
+/* =========================================================
+   FLOATING BUTTONS
+========================================================= */
+
+.whatsapp{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:4500;
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#25d366;
+  color:#fff;
+  font-size:27px;
+  box-shadow:0 10px 35px rgba(37,211,102,.35);
+}
+
+.top{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:4500;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,.5);
+  background:#111;
+  color:var(--gold2);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+  .menu{
+    display:none;
+    position:absolute;
+    top:76px;
+    left:3%;
+    right:3%;
+    padding:12px;
+    background:rgba(7,7,7,.98);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+  }
+
+  .menu.open{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .menu a{
+    text-align:center;
+    background:#111;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .about-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .info-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .listings{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+  section{
+    padding:60px 0;
+  }
+
+  .nav{
+    min-height:68px;
+  }
+
+  .brand img{
+    width:44px;
+    height:44px;
+  }
+
+  .brand-title{
+    font-size:15px;
+  }
+
+  .brand-sub{
+    font-size:8px;
+  }
+
+  .menu{
+    top:68px;
+  }
+
+  .hero{
+    min-height:calc(100vh - 68px);
+  }
+
+  .hero-content{
+    padding:55px 5px;
+  }
+
+  .hero-logo{
+    width:220px;
+  }
+
+  .stats,
+  .categories,
+  .info-grid,
+  .school-list,
+  .listings,
+  .emergency{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .community-box{
+    padding:24px 15px;
+  }
+
+  .card,
+  .form-box,
+  .admin-box{
+    padding:21px;
+  }
+
+  .opening-logo{
+    width:230px;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+.gold-line{
+  width:100px;
+  height:2px;
+  margin:15px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.loading{
+  text-align:center;
+  color:#888;
+  padding:25px;
+}
+
+/* =========================================================
+   FIREBASE ERROR
+========================================================= */
+
+.firebase-error{
+  display:none;
+  background:#250909;
+  color:#ffb4b4;
+  border:1px solid #631b1b;
+  border-radius:12px;
+  padding:12px;
+  margin-top:12px;
+  font-size:12px;
+}
 </style>
 </head>
-<body>
 
-<div class="topbar">
-<div class="container">
-<span>📍 دلے والا، تحصیل دریا خان، ضلع بھکر، پنجاب، پاکستان</span>
-<span>اپنا شہر، اپنی پہچان</span>
+<body class="lock">
+
+<!-- =======================================================
+     OPENING SCREEN
+======================================================= -->
+
+<div id="opening">
+  <div class="opening-inner">
+
+    <img
+      src="logo.pic.png"
+      class="opening-logo"
+      alt="Dulle Wala Connect Logo"
+    >
+
+    <div class="opening-line"></div>
+
+    <div class="opening-title">
+      DULLE WALA CONNECT
+    </div>
+
+    <div class="opening-urdu">
+      دلے والا کنیکٹ
+    </div>
+
+    <div class="opening-build">
+      Build by <span>Aqib Javed Malik (تیلی)</span>
+    </div>
+
+    <div class="opening-tag">
+      اپنا شہر • اپنی پہچان • اپنا کنیکٹ
+    </div>
+
+  </div>
 </div>
-</div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header>
-<div class="container nav">
-<a class="brand" href="#home">
-<div class="logo">🌿<br><small style="font-family:Cairo;font-size:10px;color:white">DW</small></div>
-<div>DULLE WALA CONNECT<small>دلے والا کنیکٹ</small></div>
-</a>
-<button class="menu-btn" id="menuBtn" type="button">☰ مینو</button>
-<nav class="navlinks" id="navlinks">
-<a href="#home">ہوم</a>
-<a href="#categories">کیٹیگریز</a>
-<a href="#businesses">کاروبار</a>
-<a href="#register">رجسٹریشن</a>
-<a href="#jobs">نوکریاں</a>
-<a href="#notices">اعلانات</a>
-<a href="#town">ہمارا شہر</a>
-<a href="#contacts">رابطہ</a>
-<button class="btn btn-primary" id="adminLoginBtn" type="button">🔐 ایڈمن لاگ اِن</button>
-</nav>
-</div>
+  <div class="nav">
+
+    <a href="#home" class="brand">
+
+      <img src="logo.pic.png" alt="Dulle Wala Connect">
+
+      <div class="brand-text">
+        <div class="brand-title">Dulle Wala Connect</div>
+        <div class="brand-sub">اپنا شہر • اپنی پہچان</div>
+      </div>
+
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      ☰
+    </button>
+
+    <nav class="menu" id="menu">
+
+      <a href="#home">Home</a>
+      <a href="#about">دلے والا</a>
+      <a href="#categories">Categories</a>
+      <a href="#schools">تعلیم</a>
+      <a href="#community">Community</a>
+      <a href="#businesses">Businesses</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#notices">Notices</a>
+      <a href="#contact">Contact</a>
+      <a href="#admin">Admin</a>
+
+    </nav>
+
+  </div>
 </header>
 
+
 <main>
-<div class="container">
-<div class="all-sections-box">
-<strong>🌿 DULLE WALA CONNECT — تمام سیکشن</strong>
-تمام حصے کھولنے کے لیے نیچے کسی بھی بٹن کو دبائیں۔
-<div class="all-section-links">
-<a href="#categories">کیٹیگریز</a>
-<a href="#businesses">کاروبار</a>
-<a href="#register">کاروبار رجسٹر کریں</a>
-<a href="#jobs">نوکریاں</a>
-<a href="#jobRegister">نوکری شامل کریں</a>
-<a href="#notices">اعلانات</a>
-<a href="#noticeRegister">اعلان شامل کریں</a>
-<a href="#emergency">ایمرجنسی</a>
-<a href="#town">دلے والا کا تعارف</a>
-<a href="#schools">اسکول</a>
-<a href="#communities">برادریاں</a>
-<a href="#contacts">ایڈمن رابطہ</a>
-<a href="#about">ہمارے بارے میں</a>
-</div>
-</div>
-</div>
 
-<section class="hero" id="home">
-<div class="container hero-grid">
-<div>
-<span class="eyebrow">DULLE WALA DIGITAL COMMUNITY</span>
-<h1>دلے والا کی ہر سہولت،<br><span>اب ایک ہی جگہ!</span></h1>
-<p>دلے والا کے کاروبار، دکانیں، نوکریاں، خدمات، کمیونٹی معلومات اور مقامی اعلانات تلاش کریں۔ اپنے کاروبار کو آن لائن متعارف کروائیں اور اپنے شہر سے جڑے رہیں۔</p>
-<div class="hero-buttons">
-<a href="#businesses" class="btn btn-gold">کاروبار تلاش کریں ↗</a>
-<a href="#register" class="btn btn-white">اپنا کاروبار شامل کریں +</a>
-<a href="#town" class="btn btn-outline" style="color:white;background:transparent;border-color:#d5ad55">ہمارے شہر کے بارے میں</a>
-</div>
-<div class="stats">
-<div class="stat"><strong>🏪</strong><span>مقامی کاروبار</span></div>
-<div class="stat"><strong>💼</strong><span>نوکریاں</span></div>
-<div class="stat"><strong>🤝</strong><span>کمیونٹی رابطہ</span></div>
-</div>
-</div>
-<div class="hero-card">
-<div class="hero-emblem">🌿</div>
-<h3>DULLE WALA CONNECT</h3>
-<p>Local Business • Jobs • Community</p>
-<p>دلے والا کی ترقی، سب کی شرکت سے</p>
-</div>
-</div>
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section id="home" class="hero">
+
+  <div class="hero-content reveal">
+
+    <img
+      src="logo.pic.png"
+      class="hero-logo"
+      alt="Dulle Wala Connect Logo"
+    >
+
+    <h1>
+      Dulle Wala <span>Connect</span>
+    </h1>
+
+    <div class="hero-urdu">
+      دلے والا — اپنا شہر، اپنی پہچان
+    </div>
+
+    <div class="gold-line"></div>
+
+    <p class="hero-desc">
+      دلے والا کے کاروبار، دکانیں، کھانے پینے کی جگہیں،
+      صحت، تعلیم، گھریلو خدمات، ٹرانسپورٹ، نوکریاں،
+      اعلانات اور کمیونٹی معلومات کو ایک جدید اور
+      خوبصورت پلیٹ فارم پر اکٹھا کرنے کی کوشش۔
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#categories" class="btn btn-gold">
+        🔎 Explore Categories
+      </a>
+
+      <a href="#businesses" class="btn btn-dark">
+        🏪 Local Businesses
+      </a>
+
+      <a href="https://wa.me/923432752543" target="_blank" class="btn btn-dark">
+        💬 WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
-<div class="container">
-<div class="search-panel">
-<div class="search-row">
-<input id="searchInput" type="search" placeholder="دکان، کاروبار یا علاقہ تلاش کریں...">
-<select id="searchCategory" aria-label="کیٹیگری منتخب کریں">
-<option value="all">تمام کیٹیگریز</option>
-<option value="shops">دکانیں</option>
-<option value="food">کھانے پینے</option>
-<option value="health">صحت</option>
-<option value="education">تعلیم</option>
-<option value="home">گھریلو خدمات</option>
-<option value="transport">ٹرانسپورٹ</option>
-<option value="other">دیگر خدمات</option>
-</select>
-<button class="btn btn-primary" id="searchBtn" type="button">تلاش کریں 🔎</button>
-</div>
-</div>
-</div>
 
-<section class="section" id="categories">
-<div class="container">
-<div class="section-head"><div class="mini">EXPLORE LOCAL</div><h2>سہولت کے مطابق تلاش کریں</h2><p>اپنی ضرورت کی کیٹیگری منتخب کریں</p></div>
-<div class="categories">
-<button class="category" data-category="shops"><div class="emoji">🛍️</div><strong>دکانیں</strong><small>SHOPS</small></button>
-<button class="category" data-category="food"><div class="emoji">🍽️</div><strong>کھانے پینے</strong><small>FOOD</small></button>
-<button class="category" data-category="health"><div class="emoji">🩺</div><strong>صحت</strong><small>HEALTH</small></button>
-<button class="category" data-category="education"><div class="emoji">📚</div><strong>تعلیم</strong><small>EDUCATION</small></button>
-<button class="category" data-category="home"><div class="emoji">🏠</div><strong>گھریلو خدمات</strong><small>HOME SERVICES</small></button>
-<button class="category" data-category="transport"><div class="emoji">🚗</div><strong>ٹرانسپورٹ</strong><small>TRANSPORT</small></button>
-<button class="category" data-category="jobs"><div class="emoji">💼</div><strong>نوکریاں</strong><small>JOBS</small></button>
-<button class="category" data-category="other"><div class="emoji">✨</div><strong>دیگر خدمات</strong><small>OTHER</small></button>
-</div>
-</div>
+<!-- =======================================================
+     STATS
+======================================================= -->
+
+<section>
+
+  <div class="stats reveal">
+
+    <div class="stat">
+      <div class="stat-icon">📍</div>
+      <strong>30110</strong>
+      <span>Postal Code</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">🕐</div>
+      <strong>UTC+5</strong>
+      <span>Pakistan Time</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">🏘️</div>
+      <strong>Dulle Wala</strong>
+      <span>Bhakkar</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">📞</div>
+      <strong>0453</strong>
+      <span>Calling Code</span>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="businesses">
-<div class="container">
-<div class="section-head"><div class="mini">LOCAL DIRECTORY</div><h2>دلے والا کے کاروبار اور خدمات</h2><p>یہاں صرف منظور شدہ کاروبار دکھائے جائیں گے۔</p></div>
-<div id="businessGrid" class="cards"><div class="empty">کاروبار لوڈ ہو رہے ہیں...</div></div>
-<p style="text-align:center;margin-top:20px"><a class="btn btn-outline" href="#register">اپنا کاروبار شامل کریں +</a></p>
-</div>
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section id="about">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Our Town</div>
+
+    <h2>
+      دلے والا <span>کے بارے میں</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      ایک ایسا ڈیجیٹل پلیٹ فارم جو دلے والا کے لوگوں اور
+      مقامی سہولیات کو ایک جگہ پر لانے کے لیے بنایا گیا ہے۔
+    </p>
+
+  </div>
+
+  <div class="about-grid">
+
+    <div class="card reveal">
+
+      <h3>🌾 دلے والا</h3>
+
+      <p class="urdu">
+        دلے والا ضلع بھکر، تحصیل دریا خان، پنجاب کا ایک
+        خوبصورت علاقہ ہے۔ یہاں دیہی زندگی، کھیت، مقامی
+        کاروبار، تعلیم، مذہبی و سماجی سرگرمیاں اور
+        کمیونٹی کا مضبوط تعلق اس علاقے کی خاص پہچان ہیں۔
+      </p>
+
+      <p style="margin-top:15px">
+        Dulle Wala Connect کا مقصد مقامی معلومات کو
+        جدید ٹیکنالوجی کے ذریعے آسان، خوبصورت اور قابلِ
+        رسائی بنانا ہے۔
+      </p>
+
+    </div>
+
+
+    <div class="card reveal">
+
+      <h3>📍 Location</h3>
+
+      <p>
+        <strong style="color:#fff">District:</strong>
+        Bhakkar
+      </p>
+
+      <p>
+        <strong style="color:#fff">Tehsil:</strong>
+        Darya Khan
+      </p>
+
+      <p>
+        <strong style="color:#fff">Province:</strong>
+        Punjab, Pakistan
+      </p>
+
+      <p>
+        <strong style="color:#fff">Postal Code:</strong>
+        30110
+      </p>
+
+      <p>
+        <strong style="color:#fff">Coordinates:</strong>
+        31°50′23″N 71°25′48″E
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="register">
-<div class="container">
-<div class="section-head"><div class="mini">JOIN OUR DIRECTORY</div><h2>اپنا کاروبار شامل کریں</h2><p>فارم جمع کریں؛ ایڈمن کی منظوری کے بعد کاروبار دکھایا جائے گا۔</p></div>
-<div class="two-col">
-<div class="form-card">
-<h3>🏪 کاروبار کی رجسٹریشن</h3>
-<form id="businessForm">
-<div class="form-grid">
-<div class="field"><label for="ownerName">مالک کا نام *</label><input id="ownerName" required maxlength="80" placeholder="اپنا نام"></div>
-<div class="field"><label for="businessPhone">رابطہ نمبر *</label><input id="businessPhone" required maxlength="25" type="tel" placeholder="03XXXXXXXXX"></div>
-<div class="field full"><label for="businessName">کاروبار / دکان کا نام *</label><input id="businessName" required maxlength="100" placeholder="مثلاً علی جنرل اسٹور"></div>
-<div class="field"><label for="businessCategory">کیٹیگری *</label><select id="businessCategory" required><option value="">منتخب کریں</option><option value="shops">دکانیں</option><option value="food">کھانے پینے</option><option value="health">صحت</option><option value="education">تعلیم</option><option value="home">گھریلو خدمات</option><option value="transport">ٹرانسپورٹ</option><option value="other">دیگر خدمات</option></select></div>
-<div class="field"><label for="businessArea">علاقہ / پتہ *</label><input id="businessArea" required maxlength="150" placeholder="محلہ، بازار، روڈ"></div>
-<div class="field full"><label for="businessDescription">کاروبار کی تفصیل</label><textarea id="businessDescription" maxlength="1000" placeholder="اپنی خدمات، اوقات یا دیگر معلومات لکھیں"></textarea></div>
-</div>
-<button class="btn btn-primary" type="submit">درخواست جمع کریں</button>
-</form>
-</div>
-<div class="form-card">
-<h3>📌 کاروبار شامل کرنے کا طریقہ</h3>
-<p>1۔ فارم میں درست معلومات لکھیں۔</p>
-<p>2۔ رابطہ نمبر اور پتہ دوبارہ چیک کریں۔</p>
-<p>3۔ درخواست جمع ہونے کے بعد ایڈمن اس کا جائزہ لے گا۔</p>
-<p>4۔ منظور ہونے کے بعد آپ کا کاروبار عوامی فہرست میں نظر آئے گا۔</p>
-<p><strong>نوٹ:</strong> صرف اپنے یا اجازت یافتہ کاروبار کی معلومات جمع کریں۔</p>
-</div>
-</div>
-</div>
+
+<!-- =======================================================
+     CATEGORIES
+======================================================= -->
+
+<section id="categories">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Explore</div>
+
+    <h2>
+      ہماری <span>Categories</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      دلے والا کی روزمرہ زندگی سے متعلق اہم کاروبار اور
+      خدمات ایک ہی جگہ۔
+    </p>
+
+  </div>
+
+
+  <div class="categories">
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">🏪</div>
+      <h3>دکانیں</h3>
+      <p>Shops & Stores</p>
+    </a>
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">🍽️</div>
+      <h3>کھانے پینے</h3>
+      <p>Food & Restaurants</p>
+    </a>
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">❤️‍🩹</div>
+      <h3>صحت</h3>
+      <p>Health Services</p>
+    </a>
+
+    <a href="#schools" class="category reveal">
+      <div class="category-icon">🎓</div>
+      <h3>تعلیم</h3>
+      <p>Education</p>
+    </a>
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">🏠</div>
+      <h3>گھریلو خدمات</h3>
+      <p>Home Services</p>
+    </a>
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">🚗</div>
+      <h3>ٹرانسپورٹ</h3>
+      <p>Transport</p>
+    </a>
+
+    <a href="#jobs" class="category reveal">
+      <div class="category-icon">💼</div>
+      <h3>نوکریاں</h3>
+      <p>Jobs</p>
+    </a>
+
+    <a href="#businesses" class="category reveal">
+      <div class="category-icon">👥</div>
+      <h3>دیگر خدمات</h3>
+      <p>Other Services</p>
+    </a>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="jobs">
-<div class="container">
-<div class="section-head"><div class="mini">LOCAL OPPORTUNITIES</div><h2>دلے والا میں نوکریاں</h2><p>صرف منظور شدہ نوکریاں یہاں دکھائی جائیں گی۔</p></div>
-<div id="jobsList" class="notice-list"><div class="empty">نوکریاں لوڈ ہو رہی ہیں...</div></div>
-<p style="text-align:center;margin-top:20px"><a href="#jobRegister" class="btn btn-primary">نوکری کی معلومات شامل کریں +</a></p>
-</div>
+
+<!-- =======================================================
+     LOCAL INFORMATION
+======================================================= -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Local Directory</div>
+
+    <h2>
+      دلے والا <span>معلومات</span>
+    </h2>
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card reveal">
+      <div class="icon">🌾</div>
+      <h3>دیہی زندگی</h3>
+      <p>
+        کھیت، زراعت، مقامی بازار اور سادہ دیہی زندگی
+        دلے والا کی نمایاں خصوصیات ہیں۔
+      </p>
+    </div>
+
+    <div class="info-card reveal">
+      <div class="icon">🕌</div>
+      <h3>مذہبی و سماجی ماحول</h3>
+      <p>
+        مساجد، دینی سرگرمیاں اور کمیونٹی روابط
+        مقامی زندگی کا اہم حصہ ہیں۔
+      </p>
+    </div>
+
+    <div class="info-card reveal">
+      <div class="icon">🛍️</div>
+      <h3>مقامی کاروبار</h3>
+      <p>
+        دکانوں، چھوٹے کاروبار اور مختلف مقامی خدمات
+        کو ڈیجیٹل جگہ دینے کی کوشش۔
+      </p>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="jobRegister">
-<div class="container">
-<div class="section-head"><div class="mini">POST A JOB</div><h2>نوکری کی معلومات شامل کریں</h2><p>منظوری کے بعد نوکری ویب سائٹ پر شائع ہوگی۔</p></div>
-<div class="form-card">
-<form id="jobForm">
-<div class="form-grid">
-<div class="field"><label for="jobTitle">نوکری کا عنوان *</label><input id="jobTitle" required maxlength="120" placeholder="مثلاً سیلز مین"></div>
-<div class="field"><label for="jobCompany">ادارہ / دکان *</label><input id="jobCompany" required maxlength="120" placeholder="ادارے کا نام"></div>
-<div class="field"><label for="jobContact">رابطہ نمبر *</label><input id="jobContact" required maxlength="25" type="tel" placeholder="03XXXXXXXXX"></div>
-<div class="field"><label for="jobType">نوکری کی قسم *</label><select id="jobType" required><option value="">منتخب کریں</option><option>فل ٹائم</option><option>پارٹ ٹائم</option><option>عارضی</option><option>اپرنٹس شپ</option></select></div>
-<div class="field full"><label for="jobLocation">مقام *</label><input id="jobLocation" required maxlength="150" placeholder="دلے والا، بازار یا ادارے کا پتہ"></div>
-<div class="field full"><label for="jobDetails">نوکری کی تفصیل</label><textarea id="jobDetails" maxlength="1000" placeholder="تنخواہ، اوقات، اہلیت اور دیگر تفصیل"></textarea></div>
-</div>
-<button class="btn btn-primary" type="submit">نوکری کی درخواست جمع کریں</button>
-</form>
-</div>
-</div>
+
+<!-- =======================================================
+     SCHOOLS
+======================================================= -->
+
+<section id="schools">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Education</div>
+
+    <h2>
+      دلے والا کے <span>تعلیمی ادارے</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+  </div>
+
+
+  <div class="school-list">
+
+    <div class="school reveal">
+      <div class="school-icon">🎓</div>
+      <div>
+        <strong>Pakistan Public School and College Dullewala</strong>
+        <span>School & College</span>
+      </div>
+    </div>
+
+    <div class="school reveal">
+      <div class="school-icon">🏫</div>
+      <div>
+        <strong>Kings Castle School</strong>
+        <span>School</span>
+      </div>
+    </div>
+
+    <div class="school reveal">
+      <div class="school-icon">📚</div>
+      <div>
+        <strong>Ghazi Education System</strong>
+        <span>Education</span>
+      </div>
+    </div>
+
+    <div class="school reveal">
+      <div class="school-icon">📖</div>
+      <div>
+        <strong>Al Qalam Public School and College</strong>
+        <span>School & College</span>
+      </div>
+    </div>
+
+    <div class="school reveal">
+      <div class="school-icon">🎒</div>
+      <div>
+        <strong>Al Syed Model Public School Dullewala</strong>
+        <span>School</span>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="notices">
-<div class="container">
-<div class="section-head"><div class="mini">COMMUNITY UPDATES</div><h2>کمیونٹی اعلانات</h2><p>مقامی اور منظور شدہ اعلانات یہاں دکھائے جائیں گے۔</p></div>
-<div id="noticeList" class="notice-list"><div class="empty">اعلانات لوڈ ہو رہے ہیں...</div></div>
-<p style="text-align:center;margin-top:20px"><a class="btn btn-primary" href="#noticeRegister">نیا اعلان شامل کریں +</a></p>
-</div>
+
+<!-- =======================================================
+     COMMUNITY
+======================================================= -->
+
+<section id="community">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Community</div>
+
+    <h2>
+      ہماری <span>Community</span>
+    </h2>
+
+  </div>
+
+
+  <div class="community-box reveal">
+
+    <h3>دلے والا — سب کا شہر</h3>
+
+    <p class="urdu">
+      مختلف خاندان، برادریاں، محلے اور کمیونٹی کے افراد
+      اس شہر کی خوبصورتی اور پہچان ہیں۔
+    </p>
+
+    <div class="tags">
+
+      <span class="tag">Local Community</span>
+      <span class="tag">Families</span>
+      <span class="tag">Students</span>
+      <span class="tag">Business Owners</span>
+      <span class="tag">Workers</span>
+      <span class="tag">Teachers</span>
+      <span class="tag">Youth</span>
+      <span class="tag">Local Services</span>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="noticeRegister">
-<div class="container">
-<div class="section-head"><div class="mini">COMMUNITY NOTICE</div><h2>کمیونٹی اعلان شامل کریں</h2><p>اعلان کی منظوری کے بعد اسے شائع کیا جائے گا۔</p></div>
-<div class="form-card">
-<form id="noticeForm">
-<div class="form-grid">
-<div class="field"><label for="noticeTitle">اعلان کا عنوان *</label><input id="noticeTitle" required maxlength="150" placeholder="اعلان کا عنوان"></div>
-<div class="field"><label for="noticeCategory">کیٹیگری *</label><select id="noticeCategory" required><option value="">منتخب کریں</option><option>اہم اطلاع</option><option>کمیونٹی</option><option>تعلیم</option><option>نوکری</option><option>کاروبار</option><option>تقریب</option><option>دیگر</option></select></div>
-<div class="field full"><label for="noticeDetails">اعلان کی تفصیل *</label><textarea id="noticeDetails" required maxlength="2000" placeholder="مکمل تفصیل لکھیں"></textarea></div>
-<div class="field full"><label for="noticeContact">رابطہ نمبر (اختیاری)</label><input id="noticeContact" maxlength="25" type="tel" placeholder="03XXXXXXXXX"></div>
-</div>
-<button class="btn btn-primary" type="submit">اعلان جمع کریں</button>
-</form>
-</div>
-</div>
+
+<!-- =======================================================
+     BUSINESS SUBMISSION
+======================================================= -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Add Your Business</div>
+
+    <h2>
+      اپنا <span>کاروبار شامل کریں</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      معلومات جمع کروائیں۔ منظوری کے بعد کاروبار عوامی
+      فہرست میں دکھایا جائے گا۔
+    </p>
+
+  </div>
+
+
+  <div class="form-box reveal">
+
+    <form id="businessForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>مالک کا نام</label>
+          <input id="businessOwner" required placeholder="نام">
+        </div>
+
+        <div class="field">
+          <label>فون / WhatsApp</label>
+          <input id="businessPhone" required placeholder="03XXXXXXXXX">
+        </div>
+
+        <div class="field">
+          <label>کاروبار کا نام</label>
+          <input id="businessName" required placeholder="مثلاً ABC Store">
+        </div>
+
+        <div class="field">
+          <label>Category</label>
+          <select id="businessCategory" required>
+            <option value="">Category منتخب کریں</option>
+            <option>Shops</option>
+            <option>Food</option>
+            <option>Health</option>
+            <option>Education</option>
+            <option>Home Services</option>
+            <option>Transport</option>
+            <option>Jobs</option>
+            <option>Other Services</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>علاقہ / محلہ</label>
+          <input id="businessArea" placeholder="محلہ، بازار، گلی وغیرہ">
+        </div>
+
+        <div class="field full">
+          <label>کاروبار کی تفصیل</label>
+          <textarea id="businessDescription" placeholder="اپنے کاروبار کے بارے میں معلومات"></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-gold" type="submit">
+          📤 Submit Business
+        </button>
+      </div>
+
+      <div class="notice">
+        ℹ️ آپ کی معلومات پہلے Admin Review میں جائیں گی۔
+        منظوری کے بعد ہی عوامی طور پر دکھائی جائیں گی۔
+      </div>
+
+    </form>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="emergency">
-<div class="container">
-<div class="section-head"><div class="mini">EMERGENCY CONTACTS</div><h2>ایمرجنسی رابطے</h2><p>ہنگامی صورت حال میں متعلقہ سرکاری سروس سے رابطہ کریں۔</p></div>
-<div class="emergency-grid">
-<div class="emergency"><div><h3>🚑 ریسکیو سروس</h3><strong>1122</strong><p>طبی ایمرجنسی اور ریسکیو</p></div><a class="btn" href="tel:1122">کال کریں</a></div>
-<div class="emergency police"><div><h3>🚔 پولیس</h3><strong>15</strong><p>پولیس ایمرجنسی</p></div><a class="btn" href="tel:15">کال کریں</a></div>
-</div>
-</div>
+
+<!-- =======================================================
+     BUSINESSES
+======================================================= -->
+
+<section id="businesses">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Local Businesses</div>
+
+    <h2>
+      دلے والا کے <span>کاروبار</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+  </div>
+
+  <div id="businessListings" class="listings">
+
+    <div class="loading">
+      کاروباری معلومات لوڈ ہو رہی ہیں...
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="town">
-<div class="container">
-<div class="section-head"><div class="mini">ABOUT OUR TOWN</div><h2>دلے والا کا تعارف</h2><p>Dullewala — ہماری پہچان، ہمارا شہر</p></div>
-<div class="about-box">
-<p><strong>دلے والا</strong> پنجاب، پاکستان کے ضلع بھکر اور تحصیل دریا خان کا ایک قصبہ ہے۔ یہ ویب سائٹ مقامی کاروبار، خدمات، تعلیم، روزگار اور کمیونٹی معلومات کو ایک جگہ جمع کرنے کے لیے بنائی گئی ہے۔</p>
-<p>شہر کی معلومات مقامی لوگوں کے تعاون سے بہتر اور تازہ کی جا سکتی ہیں۔ انتظامی حدود، آبادی اور دیگر اعدادوشمار میں وقت کے ساتھ تبدیلی ہو سکتی ہے، اس لیے سرکاری تصدیق ضروری ہے۔</p>
-</div>
-<div class="info-grid" style="margin-top:15px">
-<div class="info-tile"><h3>📍 مقام</h3><p><strong>ملک:</strong> پاکستان</p><p><strong>صوبہ:</strong> پنجاب</p><p><strong>ضلع:</strong> بھکر</p><p><strong>تحصیل:</strong> دریا خان</p></div>
-<div class="info-tile"><h3>🧭 مقامی معلومات</h3><p><strong>یونین کونسل:</strong> دلے والا (فراہم کردہ معلومات)</p><p><strong>پوسٹل کوڈ:</strong> 30110 (تصدیق کرلیں)</p><p><strong>کالنگ کوڈ:</strong> 0453 (تصدیق کرلیں)</p><p><strong>ٹائم زون:</strong> UTC+05:00</p></div>
-<div class="info-tile"><h3>🗺️ جغرافیائی محلِ وقوع</h3><p><strong>عرض بلد:</strong> 31°50′23″ شمال</p><p><strong>طول بلد:</strong> 71°25′48″ مشرق</p><p>یہ جغرافیائی تفصیل فراہم کردہ معلومات پر مبنی ہے۔</p></div>
-</div>
-</div>
+
+<!-- =======================================================
+     JOB SUBMISSION
+======================================================= -->
+
+<section id="jobs">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Employment</div>
+
+    <h2>
+      <span>Jobs</span> — نوکریوں کے مواقع
+    </h2>
+
+    <div class="gold-line"></div>
+
+  </div>
+
+
+  <div class="form-box reveal">
+
+    <form id="jobForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Job Title</label>
+          <input id="jobTitle" required placeholder="مثلاً Salesman">
+        </div>
+
+        <div class="field">
+          <label>Company / Business</label>
+          <input id="jobCompany" required placeholder="کمپنی / کاروبار">
+        </div>
+
+        <div class="field">
+          <label>Contact</label>
+          <input id="jobContact" required placeholder="Phone / WhatsApp">
+        </div>
+
+        <div class="field">
+          <label>Job Type</label>
+          <select id="jobType">
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Daily Wage</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Location</label>
+          <input id="jobLocation" placeholder="دلے والا / علاقہ">
+        </div>
+
+        <div class="field full">
+          <label>Job Details</label>
+          <textarea id="jobDetails" placeholder="تنخواہ، کام، اوقات اور دیگر معلومات"></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-gold" type="submit">
+          📤 Submit Job
+        </button>
+
+      </div>
+
+      <div class="notice">
+        ℹ️ Job بھی Admin Approval کے بعد public ہوگا۔
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <div id="jobListings" class="listings" style="margin-top:25px">
+
+    <div class="loading">
+      نوکریاں لوڈ ہو رہی ہیں...
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="schools">
-<div class="container">
-<div class="section-head"><div class="mini">EDUCATION</div><h2>دلے والا کے تعلیمی ادارے</h2><p>درج ذیل نام فراہم کردہ مقامی فہرست کے مطابق ہیں۔</p></div>
-<div class="info-grid">
-<div class="info-tile"><h3>🏫 پاکستان پبلک اسکول اینڈ کالج</h3><p>Pakistan Public School and College Dullewala</p></div>
-<div class="info-tile"><h3>📚 کنگز کاسل اسکول</h3><p>Kings Castle School</p></div>
-<div class="info-tile"><h3>🎓 غازی ایجوکیشن سسٹم</h3><p>Ghazi Education System</p></div>
-<div class="info-tile"><h3>📖 القلم پبلک اسکول اینڈ کالج</h3><p>Al Qalam Public School and College</p></div>
-<div class="info-tile"><h3>🏫 السید ماڈل پبلک اسکول</h3><p>Al Syed Model Public School Dullewala</p></div>
-</div>
-</div>
+
+<!-- =======================================================
+     NOTICES
+======================================================= -->
+
+<section id="notices">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Community Notices</div>
+
+    <h2>
+      مقامی <span>اعلانات</span>
+    </h2>
+
+    <div class="gold-line"></div>
+
+  </div>
+
+
+  <div class="form-box reveal">
+
+    <form id="noticeForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Notice Title</label>
+          <input id="noticeTitle" required placeholder="اعلان کا عنوان">
+        </div>
+
+        <div class="field">
+          <label>Category</label>
+          <select id="noticeCategory">
+            <option>Community</option>
+            <option>Education</option>
+            <option>Business</option>
+            <option>Emergency</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Notice Details</label>
+          <textarea id="noticeDetails" required placeholder="اعلان کی مکمل تفصیل"></textarea>
+        </div>
+
+        <div class="field full">
+          <label>Contact</label>
+          <input id="noticeContact" placeholder="رابطہ نمبر">
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-gold" type="submit">
+          📢 Submit Notice
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <div id="noticeListings" class="listings" style="margin-top:25px">
+
+    <div class="loading">
+      اعلانات لوڈ ہو رہے ہیں...
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="communities">
-<div class="container">
-<div class="section-head"><div class="mini">OUR COMMUNITY</div><h2>دلے والا کی برادریاں</h2><p>یہ فہرست مقامی طور پر فراہم کردہ ہے، سرکاری مردم شماری کی فہرست نہیں۔</p></div>
-<div class="about-box">
-<p>تیلی ملک، جھمٹ، راون، میانہ، گجر، مغل، بلوچ، ملک، ہینڈان، ماچھی، بھٹی، قاضی، آرائیں، چھینہ، اعوان، ساندی، بہاری، گھوکا، چوہان، خان، نیازی، بھین، شاہی، گھلو، درکھان، لوہار، علی زئی، کھوکھر، جٹ، جوئیہ، نائی، موچی، دھڑہل، جنجر، کھوڈی، چونڈی، شاہ سید، وائیں، گدارا، کمہار، کلو، کلیار، ترائر، ڈوگر، گری، پٹھان، لنگاہ، سیلو، چوہدری اور جورا۔</p>
-<p><strong>اہم نوٹ:</strong> ناموں کے ہجے اور مقامی شناخت مختلف ہو سکتی ہے۔ کسی بھی برادری کے بارے میں تصدیق کے بغیر قطعی دعویٰ نہ سمجھا جائے۔</p>
-</div>
-</div>
+
+<!-- =======================================================
+     EMERGENCY
+======================================================= -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Emergency</div>
+
+    <h2>
+      ہنگامی <span>رابطے</span>
+    </h2>
+
+  </div>
+
+
+  <div class="emergency">
+
+    <div class="emergency-card reveal">
+
+      <strong>1122</strong>
+
+      <span>
+        Rescue / Emergency
+      </span>
+
+      <br>
+
+      <a href="tel:1122">
+        📞 Call 1122
+      </a>
+
+    </div>
+
+
+    <div class="emergency-card reveal">
+
+      <strong>15</strong>
+
+      <span>
+        Police Emergency
+      </span>
+
+      <br>
+
+      <a href="tel:15">
+        📞 Call 15
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section section-white" id="contacts">
-<div class="container">
-<div class="section-head"><div class="mini">ADMIN & CONTACT</div><h2>ایڈمن / رابطہ</h2><p>ویب سائٹ سے متعلق معلومات اور رابطہ</p></div>
-<div class="contact-card">
-<h3>عاقب جاوید</h3>
-<p><strong>ولد:</strong> محمد یاسین</p>
-<p><strong>برادری:</strong> ملک تیلی (مہاجر) — فراہم کردہ ذاتی معلومات</p>
-<p><strong>پتہ:</strong> محلہ مہاجرین، گلی نمبر / وارڈ نمبر 8، دلے والا، تحصیل دریا خان، ضلع بھکر</p>
-<p><strong>واٹس ایپ:</strong> 03432752543</p>
-<p><strong>کال:</strong> 03190211287</p>
-<div class="hero-buttons">
-<a class="btn btn-gold" href="https://wa.me/923432752543" target="_blank" rel="noopener">WhatsApp پر رابطہ</a>
-<a class="btn btn-white" href="tel:03190211287">📞 کال کریں</a>
-</div>
-</div>
-</div>
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section id="contact">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Contact</div>
+
+    <h2>
+      <span>Dulle Wala Connect</span> سے رابطہ
+    </h2>
+
+  </div>
+
+
+  <div class="contact-grid">
+
+    <div class="card profile reveal">
+
+      <img
+        src="logo.pic.png"
+        class="profile-logo"
+        alt="Dulle Wala Connect"
+      >
+
+      <h3>Aqib Javed</h3>
+
+      <div class="role">
+        Founder / Builder
+      </div>
+
+      <p class="urdu" style="margin-top:10px">
+        دلے والا کنیکٹ
+      </p>
+
+      <div class="socials">
+
+        <a
+          class="social"
+          href="https://wa.me/923432752543"
+          target="_blank"
+        >
+          💬 WhatsApp
+        </a>
+
+        <a
+          class="social"
+          href="tel:03190211287"
+        >
+          📞 Phone
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="card reveal">
+
+      <h3>📍 رابطے کی معلومات</h3>
+
+      <div class="contact-details">
+
+        <div class="contact-item">
+          <b>👤</b>
+          <div>
+            <strong>نام</strong>
+            <span>Aqib Javed son of Muhammad Yasin</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <b>🏘️</b>
+          <div>
+            <strong>Community</strong>
+            <span>Malik Teli (Muhajir)</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <b>📍</b>
+          <div>
+            <strong>Address</strong>
+            <span>
+              Mohalla Muhajireen, Street/Ward 8,
+              Dulle Wala, Tehsil Darya Khan,
+              District Bhakkar
+            </span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <b>💬</b>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>03432752543</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <b>📞</b>
+          <div>
+            <strong>Phone</strong>
+            <span>03190211287</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="about">
-<div class="container">
-<div class="section-head"><div class="mini">ABOUT THIS PROJECT</div><h2>Dulle Wala Connect کے بارے میں</h2></div>
-<div class="about-box">
-<p><strong>Dulle Wala Connect</strong> ایک مقامی ڈیجیٹل ڈائریکٹری ہے جس کا مقصد دلے والا کے کاروبار، خدمات، نوکریوں، اعلانات اور مفید مقامی معلومات کو ایک جگہ فراہم کرنا ہے۔</p>
-<p>صارفین کاروبار، نوکری یا اعلان جمع کرا سکتے ہیں۔ عوامی فہرست میں شامل ہونے سے پہلے ہر درخواست ایڈمن کی منظوری کی منتظر رہے گی۔</p>
-<div class="hero-buttons">
-<button class="btn btn-primary" id="shareSite" type="button">ویب سائٹ شیئر کریں</button>
-<button class="btn btn-gold" id="whatsappShare" type="button">WhatsApp پر شیئر کریں</button>
-<button class="btn btn-outline" id="footerAdminBtn" type="button">ایڈمن لاگ اِن</button>
-</div>
-</div>
-</div>
+
+<!-- =======================================================
+     ADMIN
+======================================================= -->
+
+<section id="admin">
+
+  <div class="section-head reveal">
+
+    <div class="section-kicker">Administration</div>
+
+    <h2>
+      <span>Admin</span> Panel
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      صرف Admin UID والا صارف submitted information
+      کو approve یا reject کر سکتا ہے۔
+    </p>
+
+  </div>
+
+
+  <div class="admin-box reveal">
+
+    <button id="adminLoginBtn" class="btn btn-gold">
+      🔐 Admin Login
+    </button>
+
+    <div id="adminStatus" class="admin-status">
+      Admin status checking...
+    </div>
+
+    <div id="firebaseError" class="firebase-error"></div>
+
+    <div id="adminContent" style="display:none">
+
+      <div class="admin-list" id="adminList">
+
+        <div class="loading">
+          Pending submissions لوڈ ہو رہی ہیں...
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
+
 </main>
 
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
-<div class="container">
-<div class="footer-grid">
-<div><h3>DULLE WALA CONNECT</h3><p>دلے والا کے کاروبار، نوکریاں، مقامی خدمات اور کمیونٹی معلومات — ایک جگہ۔</p></div>
-<div><h4>اہم لنکس</h4><div class="footer-links"><a href="#businesses">کاروبار</a><a href="#jobs">نوکریاں</a><a href="#notices">اعلانات</a><a href="#town">دلے والا کا تعارف</a><a href="#contacts">رابطہ</a></div></div>
-<div><h4>رابطہ</h4><p>WhatsApp: 03432752543</p><p>فون: 03190211287</p><a href="https://wa.me/923432752543" target="_blank" rel="noopener">WhatsApp پر پیغام بھیجیں</a></div>
-</div>
-<div class="footer-bottom">© 2026 Dulle Wala Connect — تمام حقوق محفوظ ہیں۔</div>
-</div>
+
+  <img
+    src="logo.pic.png"
+    class="footer-logo"
+    alt="Dulle Wala Connect"
+  >
+
+  <div class="footer-title">
+    Dulle Wala Connect
+  </div>
+
+  <div class="footer-urdu">
+    اپنا شہر • اپنی پہچان
+  </div>
+
+  <div class="build">
+    Build by
+    <strong>
+      Aqib Javed Malik (تیلی)
+    </strong>
+  </div>
+
+  <div class="socials">
+
+    <a class="social" href="#home">
+      🏠 Home
+    </a>
+
+    <a class="social" href="#businesses">
+      🏪 Businesses
+    </a>
+
+    <a class="social" href="#jobs">
+      💼 Jobs
+    </a>
+
+    <a class="social" href="#notices">
+      📢 Notices
+    </a>
+
+    <a class="social" href="#contact">
+      📞 Contact
+    </a>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 Dulle Wala Connect — All Rights Reserved
+  </div>
+
 </footer>
 
-<a class="float-wa" href="https://wa.me/923432752543" target="_blank" rel="noopener">🟢 WhatsApp رابطہ</a>
-<div id="toast" class="toast" role="status"></div>
 
-<div class="modal" id="adminLoginModal">
-<div class="modal-box">
-<div class="modal-head"><h2>🔐 ایڈمن لاگ اِن</h2><button class="close-btn" type="button" data-close="adminLoginModal">✕</button></div>
-<form id="adminLoginForm">
-<div class="field"><label for="adminEmail">ایڈمن ای میل</label><input id="adminEmail" type="email" required autocomplete="username"></div>
-<div class="field"><label for="adminPassword">پاس ورڈ</label><input id="adminPassword" type="password" required autocomplete="current-password"></div>
-<button class="btn btn-primary" type="submit">لاگ اِن کریں</button>
-</form>
-</div>
-</div>
+<!-- FLOATING WHATSAPP -->
 
-<div class="modal" id="adminModal">
-<div class="modal-box">
-<div class="modal-head"><h2>ایڈمن ڈیش بورڈ</h2><button class="close-btn" type="button" data-close="adminModal">✕</button></div>
-<p id="adminStatus">ایڈمن ڈیش بورڈ</p>
-<div class="hero-buttons">
-<button class="btn btn-primary" type="button" data-admin-tab="businesses">کاروبار</button>
-<button class="btn btn-primary" type="button" data-admin-tab="jobs">نوکریاں</button>
-<button class="btn btn-primary" type="button" data-admin-tab="notices">اعلانات</button>
-<button class="btn btn-outline" id="adminRefresh" type="button">ریفریش</button>
-<button class="btn btn-danger" id="adminLogout" type="button">لاگ آؤٹ</button>
-</div>
-<h3 id="adminListTitle">تمام درخواستیں</h3>
-<div id="adminRecords"><div class="empty">ریکارڈ لوڈ کریں۔</div></div>
-<hr>
-<h3>منظور شدہ ریکارڈ خود شامل کریں</h3>
-<form id="adminAddForm">
-<div class="field"><label for="adminAddType">ریکارڈ کی قسم</label><select id="adminAddType"><option value="businesses">کاروبار</option><option value="jobs">نوکری</option><option value="notices">اعلان</option></select></div>
-<div id="adminAddFields"></div>
-<button class="btn btn-primary" type="submit">منظور شدہ ریکارڈ شامل کریں</button>
-</form>
-</div>
-</div>
+<a
+  class="whatsapp"
+  href="https://wa.me/923432752543"
+  target="_blank"
+  aria-label="WhatsApp"
+>
+  💬
+</a>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-<script>
+<!-- BACK TO TOP -->
+
+<button
+  class="top"
+  id="topBtn"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
+  ↑
+</button>
+
+
+<!-- =======================================================
+     FIREBASE
+======================================================= -->
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+/* =======================================================
+   FIREBASE CONFIG
+======================================================= */
+
 const firebaseConfig = {
- apiKey:"AIzaSyDWwQaAZJ21WQPpTpsfYEOSMIRcy9lwubY",
- authDomain:"dulle-wala-connect.firebaseapp.com",
- projectId:"dulle-wala-connect",
- storageBucket:"dulle-wala-connect.firebasestorage.app",
- messagingSenderId:"419493556258",
- appId:"1:419493556258:web:05dc7273c51fb6cfe51a7b",
- measurementId:"G-6TH3PJT0Z3"
+  apiKey:"AIzaSyDWwQaAZJ21WQPpTpsfYEOSMIRcy9lwubY",
+  authDomain:"dulle-wala-connect.firebaseapp.com",
+  projectId:"dulle-wala-connect",
+  storageBucket:"dulle-wala-connect.firebasestorage.app",
+  messagingSenderId:"419493556258",
+  appId:"1:419493556258:web:05dc7273c51fb6cfe51a7b",
+  measurementId:"G-6TH3PJT0Z3"
 };
+
 const ADMIN_UID="DQVmdymrRYQissjS1QBFZjQEtSE3";
-const CATEGORY_NAMES={
- shops:"دکانیں",food:"کھانے پینے",health:"صحت",education:"تعلیم",
- home:"گھریلو خدمات",transport:"ٹرانسپورٹ",other:"دیگر خدمات",jobs:"نوکریاں"
-};
-const $=id=>document.getElementById(id);
-let app=null,auth=null,db=null,firebaseReady=false,isAdmin=false,currentAdminTab="businesses";
 
-function showToast(message){
- const t=$("toast");t.textContent=message;t.classList.add("show");
- setTimeout(()=>t.classList.remove("show"),3500);
-}
-function escapeHTML(value){
- return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function safePhone(value){return String(value||"").replace(/[^\d+]/g,"").slice(0,25)}
-function dateText(value){
- try{if(!value)return "ابھی";const d=value.toDate?value.toDate():new Date(value);return d.toLocaleDateString("ur-PK")}catch(e){return "—"}
-}
-function openModal(id){$(id).classList.add("show")}
-function closeModal(id){$(id).classList.remove("show")}
-document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModal(m.id)}));
-$("menuBtn").addEventListener("click",()=>$("navlinks").classList.toggle("open"));
-document.querySelectorAll("#navlinks a").forEach(a=>a.addEventListener("click",()=>$("navlinks").classList.remove("open")));
 
-document.querySelectorAll(".category").forEach(btn=>btn.addEventListener("click",()=>{
- const category=btn.dataset.category;
- if(category==="jobs"){location.hash="#jobs";return}
- $("searchCategory").value=category;
- location.hash="#businesses";
- loadBusinesses();
-}));
-$("searchBtn").addEventListener("click",loadBusinesses);
-$("searchInput").addEventListener("input",()=>loadBusinesses());
-$("searchCategory").addEventListener("change",loadBusinesses);
+/* =======================================================
+   INITIALIZE
+======================================================= */
 
-async function initializeFirebase(){
- try{
-  if(!firebase.apps.length)app=firebase.initializeApp(firebaseConfig);
-  auth=firebase.auth();db=firebase.firestore();firebaseReady=true;
-  auth.onAuthStateChanged(async user=>{
-   isAdmin=Boolean(user&&user.uid===ADMIN_UID);
-   if(user&&!isAdmin){try{await auth.signOut()}catch(e){}showToast("اس اکاؤنٹ کو ایڈمن کی اجازت نہیں ہے۔")}
-   if(isAdmin)$("adminStatus").textContent="ایڈمن لاگ اِن ہے: "+(user.email||"");
-  });
-  await Promise.all([loadBusinesses(),loadJobs(),loadNotices()]);
- }catch(error){
-  console.error(error);
-  showToast("Firebase کنکشن نہیں بن سکا۔ سیٹنگ چیک کریں۔");
-  $("businessGrid").innerHTML='<div class="empty">ڈیٹا لوڈ نہیں ہوا۔ Firebase سیٹنگ چیک کریں۔</div>';
-  $("jobsList").innerHTML='<div class="empty">نوکریاں لوڈ نہیں ہوئیں۔</div>';
-  $("noticeList").innerHTML='<div class="empty">اعلانات لوڈ نہیں ہوئے۔</div>';
- }
-}
-function ensureFirebase(){
- if(!firebaseReady||!db){showToast("Firebase ابھی تیار نہیں۔ انٹرنیٹ چیک کریں۔");return false}
- return true;
-}
-
-async function loadBusinesses(){
- if(!ensureFirebase())return;
- const grid=$("businessGrid");grid.innerHTML='<div class="empty">کاروبار لوڈ ہو رہے ہیں...</div>';
- try{
-  const snap=await db.collection("businesses").where("status","==","approved").get();
-  const q=$("searchInput").value.trim().toLocaleLowerCase();
-  const cat=$("searchCategory").value;
-  const items=snap.docs.map(d=>({id:d.id,...d.data()})).filter(x=>{
-   const txt=[x.business,x.owner,x.area,x.description,x.phone,CATEGORY_NAMES[x.category]||x.category].join(" ").toLocaleLowerCase();
-   return(!q||txt.includes(q))&&(cat==="all"||x.category===cat);
-  }).sort((a,b)=>String(a.business||"").localeCompare(String(b.business||"")));
-  if(!items.length){grid.innerHTML='<div class="empty">ابھی کوئی منظور شدہ کاروبار نہیں ملا۔</div>';return}
-  grid.innerHTML=items.map(x=>{
-   const phone=safePhone(x.phone);
-   return `<article class="card"><div class="card-top"><span class="pill">${escapeHTML(CATEGORY_NAMES[x.category]||x.category||"دیگر")}</span><span>🏪</span></div><h3>${escapeHTML(x.business||"مقامی کاروبار")}</h3><div class="meta">📍 ${escapeHTML(x.area||"")}</div><div class="meta">👤 ${escapeHTML(x.owner||"")}</div><p>${escapeHTML(x.description||"مزید معلومات کے لیے رابطہ کریں۔")}</p>${phone?`<a class="btn btn-primary" href="tel:${escapeHTML(phone)}">📞 رابطہ کریں ${escapeHTML(x.phone)}</a>`:""}</article>`;
-  }).join("");
- }catch(e){console.error(e);grid.innerHTML='<div class="empty">کاروبار لوڈ نہیں ہوئے۔ Firestore Rules چیک کریں۔</div>'}
-}
-
-async function loadJobs(){
- if(!ensureFirebase())return;
- const list=$("jobsList");list.innerHTML='<div class="empty">نوکریاں لوڈ ہو رہی ہیں...</div>';
- try{
-  const snap=await db.collection("jobs").where("status","==","approved").get();
-  const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.toMillis?.()||0)-(a.createdAt?.toMillis?.()||0));
-  if(!items.length){list.innerHTML='<div class="empty">ابھی کوئی منظور شدہ نوکری موجود نہیں۔</div>';return}
-  list.innerHTML=items.map(x=>`<article class="notice-card"><span class="pill">${escapeHTML(x.type||"نوکری")}</span><h3>${escapeHTML(x.title||"نوکری")}</h3><p>🏢 ${escapeHTML(x.company||"")}　📍 ${escapeHTML(x.location||"")}</p><p>${escapeHTML(x.details||"")}</p>${safePhone(x.contact)?`<a class="btn btn-primary" href="tel:${escapeHTML(safePhone(x.contact))}">رابطہ کریں</a>`:""}</article>`).join("");
- }catch(e){console.error(e);list.innerHTML='<div class="empty">نوکریاں لوڈ نہیں ہوئیں۔ Rules چیک کریں۔</div>'}
-}
-
-async function loadNotices(){
- if(!ensureFirebase())return;
- const list=$("noticeList");list.innerHTML='<div class="empty">اعلانات لوڈ ہو رہے ہیں...</div>';
- try{
-  const snap=await db.collection("notices").where("status","==","approved").get();
-  const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.toMillis?.()||0)-(a.createdAt?.toMillis?.()||0));
-  if(!items.length){list.innerHTML='<div class="empty">ابھی کوئی منظور شدہ اعلان موجود نہیں۔</div>';return}
-  list.innerHTML=items.map(x=>`<article class="notice-card"><span class="pill">${escapeHTML(x.category||"کمیونٹی")}</span><h3>${escapeHTML(x.title||"اعلان")}</h3><p>${escapeHTML(x.details||"")}</p><small>📅 ${escapeHTML(dateText(x.createdAt))}</small>${safePhone(x.contact)?`<p><a class="btn btn-outline" href="tel:${escapeHTML(safePhone(x.contact))}">رابطہ کریں</a></p>`:""}</article>`).join("");
- }catch(e){console.error(e);list.innerHTML='<div class="empty">اعلانات لوڈ نہیں ہوئے۔ Rules چیک کریں۔</div>'}
-}
-
-async function submitPublicRecord(collection,data,form){
- if(!ensureFirebase())return;
- const btn=form.querySelector('button[type="submit"]'),old=btn.textContent;
- btn.disabled=true;btn.textContent="انتظار کریں...";
- try{
-  await db.collection(collection).add({...data,status:"pending",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-  form.reset();showToast("درخواست موصول ہوگئی۔ منظوری کے بعد شائع ہوگی۔");
- }catch(e){
-  console.error(e);
-  showToast(e.code==="permission-denied"?"اجازت نہیں ملی۔ Firestore Rules چیک کریں۔":"درخواست جمع نہیں ہوئی۔ انٹرنیٹ چیک کریں۔");
- }finally{btn.disabled=false;btn.textContent=old}
-}
-$("businessForm").addEventListener("submit",async e=>{
- e.preventDefault();
- await submitPublicRecord("businesses",{
-  owner:$("ownerName").value.trim(),phone:$("businessPhone").value.trim(),
-  business:$("businessName").value.trim(),category:$("businessCategory").value,
-  area:$("businessArea").value.trim(),description:$("businessDescription").value.trim()
- },e.currentTarget);
-});
-$("jobForm").addEventListener("submit",async e=>{
- e.preventDefault();
- await submitPublicRecord("jobs",{
-  title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),
-  contact:$("jobContact").value.trim(),type:$("jobType").value,
-  location:$("jobLocation").value.trim(),details:$("jobDetails").value.trim()
- },e.currentTarget);
-});
-$("noticeForm").addEventListener("submit",async e=>{
- e.preventDefault();
- await submitPublicRecord("notices",{
-  title:$("noticeTitle").value.trim(),category:$("noticeCategory").value,
-  details:$("noticeDetails").value.trim(),contact:$("noticeContact").value.trim()
- },e.currentTarget);
-});
-
-function openAdminLogin(){
- if(isAdmin){openModal("adminModal");loadAdminRecords(currentAdminTab)}
- else{$("adminLoginForm").reset();openModal("adminLoginModal")}
-}
-$("adminLoginBtn").addEventListener("click",openAdminLogin);
-$("footerAdminBtn").addEventListener("click",openAdminLogin);
-
-$("adminLoginForm").addEventListener("submit",async e=>{
- e.preventDefault();if(!ensureFirebase())return;
- const btn=e.currentTarget.querySelector('button[type="submit"]');btn.disabled=true;
- try{
-  const result=await auth.signInWithEmailAndPassword($("adminEmail").value.trim(),$("adminPassword").value);
-  if(result.user.uid!==ADMIN_UID){await auth.signOut();showToast("یہ اکاؤنٹ مجاز ایڈمن نہیں ہے۔");return}
-  isAdmin=true;closeModal("adminLoginModal");openModal("adminModal");
-  $("adminStatus").textContent="ایڈمن لاگ اِن ہے: "+(result.user.email||"");
-  showToast("ایڈمن لاگ اِن کامیاب ہوگیا۔");await loadAdminRecords(currentAdminTab);
- }catch(e){
-  console.error(e);showToast("لاگ اِن ناکام۔ ای میل، پاس ورڈ اور Firebase Authentication چیک کریں۔");
- }finally{btn.disabled=false}
-});
-$("adminLogout").addEventListener("click",async()=>{
- if(auth){try{await auth.signOut()}catch(e){}}
- isAdmin=false;closeModal("adminModal");showToast("آپ لاگ آؤٹ ہوگئے۔");
-});
-document.querySelectorAll("[data-admin-tab]").forEach(b=>b.addEventListener("click",()=>loadAdminRecords(b.dataset.adminTab)));
-$("adminRefresh").addEventListener("click",()=>loadAdminRecords(currentAdminTab));
-
-const COLLECTION_LABELS={businesses:"کاروبار",jobs:"نوکریاں",notices:"اعلانات"};
-function adminSummary(type,x){
- if(type==="businesses")return{title:x.business||"کاروبار",subtitle:(x.owner||"")+" · "+(x.area||""),contact:x.phone||"",details:x.description||"",extra:CATEGORY_NAMES[x.category]||x.category||""};
- if(type==="jobs")return{title:x.title||"نوکری",subtitle:(x.company||"")+" · "+(x.location||""),contact:x.contact||"",details:x.details||"",extra:x.type||""};
- return{title:x.title||"اعلان",subtitle:x.category||"",contact:x.contact||"",details:x.details||"",extra:""};
-}
-async function loadAdminRecords(type){
- if(!isAdmin||!auth?.currentUser||auth.currentUser.uid!==ADMIN_UID){showToast("ایڈمن اجازت درکار ہے۔");return}
- currentAdminTab=type;$("adminListTitle").textContent=COLLECTION_LABELS[type]+" — تمام درخواستیں";
- const box=$("adminRecords");box.innerHTML='<div class="empty">ریکارڈ لوڈ ہو رہے ہیں...</div>';
- try{
-  const snap=await db.collection(type).get();
-  const items=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.toMillis?.()||0)-(a.createdAt?.toMillis?.()||0));
-  if(!items.length){box.innerHTML='<div class="empty">کوئی ریکارڈ موجود نہیں۔</div>';return}
-  box.innerHTML=items.map(x=>{
-   const s=adminSummary(type,x),status=x.status==="approved"?"منظور شدہ":x.status==="rejected"?"مسترد":"زیرِ جائزہ";
-   return `<article class="admin-record"><div class="card-top"><h3>${escapeHTML(s.title)}</h3><span class="pill">${status}</span></div><p><b>${escapeHTML(s.subtitle)}</b></p>${s.extra?`<p>قسم: ${escapeHTML(s.extra)}</p>`:""}${s.contact?`<p>رابطہ: ${escapeHTML(s.contact)}</p>`:""}<p>${escapeHTML(s.details)}</p><p>تاریخ: ${escapeHTML(dateText(x.createdAt))}</p><div class="admin-actions"><button class="small-btn small-green" data-action="approve" data-type="${type}" data-id="${escapeHTML(x.id)}">✓ منظور کریں</button><button class="small-btn small-red" data-action="reject" data-type="${type}" data-id="${escapeHTML(x.id)}">✕ مسترد کریں</button><button class="small-btn small-gray" data-action="delete" data-type="${type}" data-id="${escapeHTML(x.id)}">🗑 حذف کریں</button></div></article>`;
-  }).join("");
- }catch(e){console.error(e);box.innerHTML='<div class="empty">ریکارڈ نہیں کھل سکے۔ ایڈمن اجازت اور Rules چیک کریں۔</div>'}
-}
-$("adminRecords").addEventListener("click",async e=>{
- const b=e.target.closest("button[data-action]");if(!b)return;
- if(!isAdmin||auth?.currentUser?.uid!==ADMIN_UID){showToast("ایڈمن اجازت درکار ہے۔");return}
- const type=b.dataset.type,id=b.dataset.id,action=b.dataset.action;
- if(!["businesses","jobs","notices"].includes(type))return;
- if(action==="delete"&&!confirm("کیا آپ واقعی یہ ریکارڈ حذف کرنا چاہتے ہیں؟"))return;
- b.disabled=true;
- try{
-  const ref=db.collection(type).doc(id);
-  if(action==="approve")await ref.update({status:"approved"});
-  if(action==="reject")await ref.update({status:"rejected"});
-  if(action==="delete")await ref.delete();
-  showToast("ریکارڈ اپڈیٹ ہوگیا۔");
-  await loadAdminRecords(type);
-  if(type==="businesses")await loadBusinesses();
-  if(type==="jobs")await loadJobs();
-  if(type==="notices")await loadNotices();
- }catch(e){console.error(e);showToast("عمل مکمل نہیں ہوا۔ Firestore Rules چیک کریں۔")}
- finally{b.disabled=false}
-});
-
-function addField(id,label,placeholder,options){
- if(options)return `<div class="field"><label for="${id}">${label}</label><select id="${id}" required>${options.map(o=>`<option value="${escapeHTML(o.value)}">${escapeHTML(o.label)}</option>`).join("")}</select></div>`;
- return `<div class="field"><label for="${id}">${label}</label><input id="${id}" maxlength="500" required placeholder="${escapeHTML(placeholder||"")}"></div>`;
-}
-function addTextarea(id,label,placeholder){
- return `<div class="field"><label for="${id}">${label}</label><textarea id="${id}" maxlength="1500" placeholder="${escapeHTML(placeholder||"")}"></textarea></div>`;
-}
-function renderAdminAddFields(){
- const type=$("adminAddType").value,el=$("adminAddFields");
- if(type==="businesses"){
-  el.innerHTML=addField("aaOwner","مالک کا نام","مالک کا نام")+addField("aaPhone","رابطہ نمبر","03XXXXXXXXX")+addField("aaBusiness","کاروبار کا نام","دکان کا نام")+addField("aaCategory","کیٹیگری","",Object.entries(CATEGORY_NAMES).filter(([k])=>k!=="jobs").map(([value,label])=>({value,label})))+addField("aaArea","علاقہ / پتہ","علاقہ")+addTextarea("aaDescription","تفصیل","کاروبار کی تفصیل");
- }else if(type==="jobs"){
-  el.innerHTML=addField("aaTitle","نوکری کا عنوان","نوکری کا عنوان")+addField("aaCompany","ادارہ / دکان","ادارے کا نام")+addField("aaContact","رابطہ نمبر","03XXXXXXXXX")+addField("aaType","نوکری کی قسم","",[ "فل ٹائم","پارٹ ٹائم","عارضی","اپرنٹس شپ"].map(x=>({value:x,label:x})))+addField("aaLocation","مقام","مقام")+addTextarea("aaDetails","تفصیل","نوکری کی تفصیل");
- }else{
-  el.innerHTML=addField("aaTitle","اعلان کا عنوان","اعلان کا عنوان")+addField("aaCategory","کیٹیگری","",["اہم اطلاع","کمیونٹی","تعلیم","نوکری","کاروبار","تقریب","دیگر"].map(x=>({value:x,label:x})))+addField("aaContact","رابطہ نمبر","اختیاری نمبر")+addTextarea("aaDetails","تفصیل","اعلان کی تفصیل");
-  $("aaContact").required=false;
- }
-}
-$("adminAddType").addEventListener("change",renderAdminAddFields);
-renderAdminAddFields();
-
-$("adminAddForm").addEventListener("submit",async e=>{
- e.preventDefault();
- if(!ensureFirebase()||!isAdmin||auth?.currentUser?.uid!==ADMIN_UID){showToast("صرف مجاز ایڈمن ریکارڈ شامل کر سکتا ہے۔");return}
- const type=$("adminAddType").value,v=id=>($(id)?.value||"").trim();
- let data;
- if(type==="businesses")data={owner:v("aaOwner"),phone:v("aaPhone"),business:v("aaBusiness"),category:v("aaCategory"),area:v("aaArea"),description:v("aaDescription")};
- else if(type==="jobs")data={title:v("aaTitle"),company:v("aaCompany"),contact:v("aaContact"),type:v("aaType"),location:v("aaLocation"),details:v("aaDetails")};
- else data={title:v("aaTitle"),category:v("aaCategory"),details:v("aaDetails"),contact:v("aaContact")};
- const btn=e.currentTarget.querySelector('button[type="submit"]');btn.disabled=true;
- try{
-  await db.collection(type).add({...data,status:"approved",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-  e.currentTarget.reset();renderAdminAddFields();showToast("منظور شدہ ریکارڈ شامل ہوگیا۔");
-  await loadAdminRecords(type);
-  if(type==="businesses")await loadBusinesses();
-  if(type==="jobs")await loadJobs();
-  if(type==="notices")await loadNotices();
- }catch(e){console.error(e);showToast("ریکارڈ شامل نہیں ہوا۔ ایڈمن اجازت اور Rules چیک کریں۔")}
- finally{btn.disabled=false}
-});
-
-function shareWebsite(){
- const url=location.href,text="Dulle Wala Connect — دلے والا کے کاروبار، نوکریاں اور خدمات: "+url;
- if(navigator.share)navigator.share({title:"Dulle Wala Connect",text,url}).catch(()=>{});
- else if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(text).then(()=>showToast("ویب سائٹ کا لنک کاپی ہوگیا۔")).catch(()=>window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank"));
- else window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
-}
-$("shareSite").addEventListener("click",shareWebsite);
-$("whatsappShare").addEventListener("click",()=>window.open("https://wa.me/?text="+encodeURIComponent("Dulle Wala Connect: "+location.href),"_blank","noopener"));
+let app;
+let db;
+let auth;
+let currentUser=null;
 
 try{
- const sections=document.querySelectorAll("main section.section");
- if("IntersectionObserver" in window){
-  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-   if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}
-  }),{threshold:.06});
-  sections.forEach(s=>observer.observe(s));
- }else sections.forEach(s=>s.classList.add("visible"));
-}catch(e){document.querySelectorAll("main section.section").forEach(s=>s.classList.add("visible"))}
 
-initializeFirebase();
+  app=initializeApp(firebaseConfig);
+
+  db=getFirestore(app);
+
+  auth=getAuth(app);
+
+  signInAnonymously(auth).catch(error=>{
+    console.log("Anonymous auth:",error);
+  });
+
+  onAuthStateChanged(auth,user=>{
+    currentUser=user||null;
+    updateAdminStatus();
+  });
+
+}catch(error){
+
+  console.error(error);
+
+  const errorBox=document.getElementById("firebaseError");
+
+  if(errorBox){
+    errorBox.style.display="block";
+    errorBox.textContent=
+      "Firebase connection error: "+error.message;
+  }
+
+}
+
+
+/* =======================================================
+   OPENING SCREEN
+======================================================= */
+
+setTimeout(()=>{
+
+  const opening=document.getElementById("opening");
+
+  opening.classList.add("hide");
+
+  document.body.classList.remove("lock");
+
+},4200);
+
+
+/* =======================================================
+   MOBILE MENU
+======================================================= */
+
+const menuBtn=document.getElementById("menuBtn");
+const menu=document.getElementById("menu");
+
+menuBtn.addEventListener("click",()=>{
+
+  menu.classList.toggle("open");
+
+});
+
+document.querySelectorAll(".menu a").forEach(link=>{
+
+  link.addEventListener("click",()=>{
+    menu.classList.remove("open");
+  });
+
+});
+
+
+/* =======================================================
+   REVEAL
+======================================================= */
+
+const observer=new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+
+  });
+
+},{
+  threshold:.1
+});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
+});
+
+
+/* =======================================================
+   TOP BUTTON
+======================================================= */
+
+window.addEventListener("scroll",()=>{
+
+  const top=document.getElementById("topBtn");
+
+  if(window.scrollY>500){
+    top.style.display="flex";
+  }else{
+    top.style.display="none";
+  }
+
+});
+
+
+/* =======================================================
+   SAFE TEXT
+======================================================= */
+
+function escapeHTML(value){
+
+  return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =======================================================
+   CATEGORY ICON
+======================================================= */
+
+function getCategoryIcon(category){
+
+  const map={
+
+    "Shops":"🏪",
+    "Food":"🍽️",
+    "Health":"❤️‍🩹",
+    "Education":"🎓",
+    "Home Services":"🏠",
+    "Transport":"🚗",
+    "Jobs":"💼",
+    "Other Services":"👥"
+
+  };
+
+  return map[category]||"📌";
+
+}
+
+
+/* =======================================================
+   BUSINESS FORM
+======================================================= */
+
+document.getElementById("businessForm")
+.addEventListener("submit",async e=>{
+
+  e.preventDefault();
+
+  if(!db){
+    alert("Firebase ابھی connect نہیں ہے۔");
+    return;
+  }
+
+  const button=e.target.querySelector("button");
+
+  button.disabled=true;
+  button.textContent="Submitting...";
+
+  try{
+
+    await addDoc(collection(db,"businesses"),{
+
+      owner:document.getElementById("businessOwner").value.trim(),
+
+      phone:document.getElementById("businessPhone").value.trim(),
+
+      business:document.getElementById("businessName").value.trim(),
+
+      category:document.getElementById("businessCategory").value,
+
+      area:document.getElementById("businessArea").value.trim(),
+
+      description:
+        document.getElementById("businessDescription").value.trim(),
+
+      status:"pending",
+
+      createdAt:serverTimestamp()
+
+    });
+
+    alert(
+      "آپ کی Business information کامیابی سے submit ہوگئی ہے۔ Admin approval کے بعد یہ public ہوگی۔"
+    );
+
+    e.target.reset();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert("Submission میں مسئلہ آیا: "+error.message);
+
+  }
+
+  button.disabled=false;
+  button.textContent="📤 Submit Business";
+
+});
+
+
+/* =======================================================
+   JOB FORM
+======================================================= */
+
+document.getElementById("jobForm")
+.addEventListener("submit",async e=>{
+
+  e.preventDefault();
+
+  if(!db){
+    alert("Firebase ابھی connect نہیں ہے۔");
+    return;
+  }
+
+  const button=e.target.querySelector("button");
+
+  button.disabled=true;
+  button.textContent="Submitting...";
+
+  try{
+
+    await addDoc(collection(db,"jobs"),{
+
+      title:document.getElementById("jobTitle").value.trim(),
+
+      company:document.getElementById("jobCompany").value.trim(),
+
+      contact:document.getElementById("jobContact").value.trim(),
+
+      type:document.getElementById("jobType").value,
+
+      location:document.getElementById("jobLocation").value.trim(),
+
+      details:document.getElementById("jobDetails").value.trim(),
+
+      status:"pending",
+
+      createdAt:serverTimestamp()
+
+    });
+
+    alert(
+      "Job successfully submit ہوگئی ہے۔ Approval کے بعد public ہوگی۔"
+    );
+
+    e.target.reset();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert("Job submission error: "+error.message);
+
+  }
+
+  button.disabled=false;
+  button.textContent="📤 Submit Job";
+
+});
+
+
+/* =======================================================
+   NOTICE FORM
+======================================================= */
+
+document.getElementById("noticeForm")
+.addEventListener("submit",async e=>{
+
+  e.preventDefault();
+
+  if(!db){
+    alert("Firebase ابھی connect نہیں ہے۔");
+    return;
+  }
+
+  const button=e.target.querySelector("button");
+
+  button.disabled=true;
+  button.textContent="Submitting...";
+
+  try{
+
+    await addDoc(collection(db,"notices"),{
+
+      title:document.getElementById("noticeTitle").value.trim(),
+
+      category:document.getElementById("noticeCategory").value,
+
+      details:document.getElementById("noticeDetails").value.trim(),
+
+      contact:document.getElementById("noticeContact").value.trim(),
+
+      status:"pending",
+
+      createdAt:serverTimestamp()
+
+    });
+
+    alert(
+      "Notice successfully submit ہوگیا ہے۔ Approval کے بعد public ہوگا۔"
+    );
+
+    e.target.reset();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert("Notice submission error: "+error.message);
+
+  }
+
+  button.disabled=false;
+  button.textContent="📢 Submit Notice";
+
+});
+
+
+/* =======================================================
+   PUBLIC BUSINESSES
+======================================================= */
+
+function loadBusinesses(){
+
+  if(!db)return;
+
+  const box=document.getElementById("businessListings");
+
+  const q=query(
+    collection(db,"businesses"),
+    where("status","==","approved")
+  );
+
+  onSnapshot(q,snapshot=>{
+
+    box.innerHTML="";
+
+    if(snapshot.empty){
+
+      box.innerHTML=`
+        <div class="card" style="grid-column:1/-1;text-align:center">
+          <h3>🏪 ابھی کوئی approved business موجود نہیں</h3>
+          <p>اپنا کاروبار submit کریں اور approval کے بعد یہاں دکھائی دے گا۔</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(item=>{
+
+      const d=item.data();
+
+      const phone=String(d.phone||"")
+        .replace(/\D/g,"");
+
+      const whatsapp=
+        phone.startsWith("0")
+        ? "92"+phone.substring(1)
+        : phone;
+
+      box.innerHTML+=`
+
+        <div class="listing reveal">
+
+          <div class="listing-top">
+
+            <div class="listing-icon">
+              ${getCategoryIcon(d.category)}
+            </div>
+
+            <span class="badge">
+              APPROVED
+            </span>
+
+          </div>
+
+          <h3>
+            ${escapeHTML(d.business)}
+          </h3>
+
+          <p>
+            <strong style="color:#ddd">
+              Category:
+            </strong>
+            ${escapeHTML(d.category)}
+          </p>
+
+          <p>
+            📍 ${escapeHTML(d.area||"Dulle Wala")}
+          </p>
+
+          <p>
+            ${escapeHTML(d.description||"")}
+          </p>
+
+          <div class="contact">
+            ${escapeHTML(d.phone||"")}
+          </div>
+
+          ${
+            whatsapp
+            ?
+            `
+            <a
+              class="btn btn-gold"
+              style="width:100%;margin-top:13px"
+              href="https://wa.me/${whatsapp}"
+              target="_blank"
+            >
+              💬 WhatsApp
+            </a>
+            `
+            :""
+          }
+
+        </div>
+      `;
+
+    });
+
+    document.querySelectorAll("#businessListings .reveal")
+      .forEach(el=>observer.observe(el));
+
+  },error=>{
+
+    console.error("Business listener:",error);
+
+    box.innerHTML=`
+      <div class="card" style="grid-column:1/-1">
+        <h3>Business data load نہیں ہو سکا</h3>
+        <p>${escapeHTML(error.message)}</p>
+      </div>
+    `;
+
+  });
+
+}
+
+
+/* =======================================================
+   PUBLIC JOBS
+======================================================= */
+
+function loadJobs(){
+
+  if(!db)return;
+
+  const box=document.getElementById("jobListings");
+
+  const q=query(
+    collection(db,"jobs"),
+    where("status","==","approved")
+  );
+
+  onSnapshot(q,snapshot=>{
+
+    box.innerHTML="";
+
+    if(snapshot.empty){
+
+      box.innerHTML=`
+        <div class="card" style="grid-column:1/-1;text-align:center">
+          <h3>💼 ابھی کوئی approved job موجود نہیں</h3>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(item=>{
+
+      const d=item.data();
+
+      box.innerHTML+=`
+
+        <div class="listing reveal">
+
+          <div class="listing-top">
+
+            <div class="listing-icon">
+              💼
+            </div>
+
+            <span class="badge">
+              JOB
+            </span>
+
+          </div>
+
+          <h3>
+            ${escapeHTML(d.title)}
+          </h3>
+
+          <p>
+            🏢 ${escapeHTML(d.company)}
+          </p>
+
+          <p>
+            📍 ${escapeHTML(d.location||"Dulle Wala")}
+          </p>
+
+          <p>
+            ⏰ ${escapeHTML(d.type||"")}
+          </p>
+
+          <p>
+            ${escapeHTML(d.details||"")}
+          </p>
+
+          <div class="contact">
+            ${escapeHTML(d.contact||"")}
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+    document.querySelectorAll("#jobListings .reveal")
+      .forEach(el=>observer.observe(el));
+
+  });
+
+}
+
+
+/* =======================================================
+   PUBLIC NOTICES
+======================================================= */
+
+function loadNotices(){
+
+  if(!db)return;
+
+  const box=document.getElementById("noticeListings");
+
+  const q=query(
+    collection(db,"notices"),
+    where("status","==","approved")
+  );
+
+  onSnapshot(q,snapshot=>{
+
+    box.innerHTML="";
+
+    if(snapshot.empty){
+
+      box.innerHTML=`
+        <div class="card" style="grid-column:1/-1;text-align:center">
+          <h3>📢 ابھی کوئی approved notice موجود نہیں</h3>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(item=>{
+
+      const d=item.data();
+
+      box.innerHTML+=`
+
+        <div class="listing reveal">
+
+          <div class="listing-top">
+
+            <div class="listing-icon">
+              📢
+            </div>
+
+            <span class="badge">
+              NOTICE
+            </span>
+
+          </div>
+
+          <h3>
+            ${escapeHTML(d.title)}
+          </h3>
+
+          <p>
+            🏷️ ${escapeHTML(d.category||"Community")}
+          </p>
+
+          <p>
+            ${escapeHTML(d.details||"")}
+          </p>
+
+          <div class="contact">
+            ${escapeHTML(d.contact||"")}
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+    document.querySelectorAll("#noticeListings .reveal")
+      .forEach(el=>observer.observe(el));
+
+  });
+
+}
+
+
+/* =======================================================
+   ADMIN
+======================================================= */
+
+function updateAdminStatus(){
+
+  const status=document.getElementById("adminStatus");
+  const content=document.getElementById("adminContent");
+
+  if(!currentUser){
+
+    status.textContent=
+      "Authentication available نہیں ہے۔";
+
+    content.style.display="none";
+
+    return;
+  }
+
+  if(currentUser.uid===ADMIN_UID){
+
+    status.innerHTML=
+      "🟢 Admin verified — آپ Admin Panel استعمال کر سکتے ہیں۔";
+
+    content.style.display="block";
+
+    loadAdminSubmissions();
+
+  }else{
+
+    status.innerHTML=
+      "🔒 Admin access نہیں۔ Current user authorized admin نہیں ہے۔";
+
+    content.style.display="none";
+
+  }
+
+}
+
+
+/* =======================================================
+   ADMIN LOGIN
+======================================================= */
+
+document.getElementById("adminLoginBtn")
+.addEventListener("click",async()=>{
+
+  if(!auth){
+
+    alert("Firebase Authentication available نہیں ہے۔");
+
+    return;
+  }
+
+  try{
+
+    await signInAnonymously(auth);
+
+    alert(
+      "Firebase authentication complete۔ اگر یہ Admin UID ہے تو panel unlock ہوگا۔"
+    );
+
+  }catch(error){
+
+    alert(
+      "Admin authentication error: "+error.message
+    );
+
+  }
+
+});
+
+
+/* =======================================================
+   ADMIN LOAD
+======================================================= */
+
+async function loadAdminSubmissions(){
+
+  if(!db || !currentUser || currentUser.uid!==ADMIN_UID){
+    return;
+  }
+
+  const box=document.getElementById("adminList");
+
+  box.innerHTML=`
+    <div class="loading">
+      Pending submissions load ہو رہی ہیں...
+    </div>
+  `;
+
+  try{
+
+    const collections=[
+      "businesses",
+      "jobs",
+      "notices"
+    ];
+
+    let html="";
+
+    for(const collectionName of collections){
+
+      const q=query(
+        collection(db,collectionName),
+        where("status","==","pending")
+      );
+
+      onSnapshot(q,snapshot=>{
+
+        renderAdminAll();
+
+      });
+
+    }
+
+    async function renderAdminAll(){
+
+      let all=[];
+
+      for(const collectionName of collections){
+
+        const q=query(
+          collection(db,collectionName),
+          where("status","==","pending")
+        );
+
+        const unsubscribeData=await new Promise(resolve=>{
+
+          let done=false;
+
+          const unsubscribe=onSnapshot(q,snap=>{
+
+            if(!done){
+
+              done=true;
+
+              resolve({
+                snapshot:snap,
+                unsubscribe
+              });
+
+            }
+
+          });
+
+        });
+
+        unsubscribeData.snapshot.forEach(docSnap=>{
+
+          all.push({
+            collection:collectionName,
+            id:docSnap.id,
+            data:docSnap.data()
+          });
+
+          unsubscribeData.unsubscribe();
+
+        });
+
+      }
+
+
+      if(all.length===0){
+
+        box.innerHTML=`
+          <div class="admin-item">
+            <h4>✅ No Pending Submissions</h4>
+            <p>اس وقت کوئی pending submission موجود نہیں۔</p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      box.innerHTML="";
+
+
+      all.forEach(item=>{
+
+        let title="";
+        let text="";
+
+        if(item.collection==="businesses"){
+
+          title="🏪 "+(item.data.business||"Business");
+
+          text=
+            "Owner: "+(item.data.owner||"")+
+            "<br>Phone: "+(item.data.phone||"")+
+            "<br>Category: "+(item.data.category||"")+
+            "<br>Area: "+(item.data.area||"")+
+            "<br>Description: "+(item.data.description||"");
+
+        }
+
+        if(item.collection==="jobs"){
+
+          title="💼 "+(item.data.title||"Job");
+
+          text=
+            "Company: "+(item.data.company||"")+
+            "<br>Contact: "+(item.data.contact||"")+
+            "<br>Type: "+(item.data.type||"")+
+            "<br>Location: "+(item.data.location||"")+
+            "<br>Details: "+(item.data.details||"");
+
+        }
+
+        if(item.collection==="notices"){
+
+          title="📢 "+(item.data.title||"Notice");
+
+          text=
+            "Category: "+(item.data.category||"")+
+            "<br>Contact: "+(item.data.contact||"")+
+            "<br>Details: "+(item.data.details||"");
+
+        }
+
+
+        const wrapper=document.createElement("div");
+
+        wrapper.className="admin-item";
+
+        wrapper.innerHTML=`
+
+          <h4>
+            ${escapeHTML(title)}
+          </h4>
+
+          <p>
+            ${escapeHTML(text)
+              .replace(/&lt;br&gt;/g,"<br>")
+            }
+          </p>
+
+          <div class="admin-actions">
+
+            <button
+              class="small-btn approve"
+              data-action="approve"
+            >
+              ✓ Approve
+            </button>
+
+            <button
+              class="small-btn reject"
+              data-action="reject"
+            >
+              ✕ Reject
+            </button>
+
+            <button
+              class="small-btn delete"
+              data-action="delete"
+            >
+              🗑 Delete
+            </button>
+
+          </div>
+        `;
+
+
+        wrapper.querySelector('[data-action="approve"]')
+        .addEventListener("click",async()=>{
+
+          await updateDoc(
+            doc(db,item.collection,item.id),
+            {status:"approved"}
+          );
+
+          alert("Approved");
+
+          renderAdminAll();
+
+        });
+
+
+        wrapper.querySelector('[data-action="reject"]')
+        .addEventListener("click",async()=>{
+
+          await updateDoc(
+            doc(db,item.collection,item.id),
+            {status:"rejected"}
+          );
+
+          alert("Rejected");
+
+          renderAdminAll();
+
+        });
+
+
+        wrapper.querySelector('[data-action="delete"]')
+        .addEventListener("click",async()=>{
+
+          if(!confirm("کیا آپ واقعی اسے delete کرنا چاہتے ہیں؟")){
+            return;
+          }
+
+          await deleteDoc(
+            doc(db,item.collection,item.id)
+          );
+
+          alert("Deleted");
+
+          renderAdminAll();
+
+        });
+
+
+        box.appendChild(wrapper);
+
+      });
+
+    }
+
+    await renderAdminAll();
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML=`
+      <div class="admin-item">
+        <h4>Admin Error</h4>
+        <p>${escapeHTML(error.message)}</p>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =======================================================
+   START PUBLIC DATA
+======================================================= */
+
+loadBusinesses();
+loadJobs();
+loadNotices();
+
 </script>
+
+
+<!-- =======================================================
+     END
+======================================================= -->
+
 </body>
 </html>
