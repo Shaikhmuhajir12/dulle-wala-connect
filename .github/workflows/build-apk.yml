@@ -1,30 +1,26 @@
-name: Build Dulle Wala Connect APK
+name: Dulle Wala Connect APK
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Get source
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
+      - name: Android
         uses: android-actions/setup-android@v3
 
-      - name: Create Android project
-        shell: bash
+      - name: Create project
         run: |
           mkdir -p app/src/main/java/com/dullewala/connect
           mkdir -p app/src/main/res/values
@@ -47,7 +43,7 @@ jobs:
           }
 
           rootProject.name = "DulleWalaConnect"
-          include(":app")
+          include ":app"
           EOF
 
           cat > build.gradle <<'EOF'
@@ -80,7 +76,6 @@ jobs:
               <style name="AppTheme"
                   parent="android:style/Theme.Material.Light.NoActionBar">
                   <item name="android:fontFamily">sans</item>
-                  <item name="android:colorAccent">#D4AF37</item>
                   <item name="android:statusBarColor">#000000</item>
                   <item name="android:navigationBarColor">#000000</item>
               </style>
@@ -88,4 +83,82 @@ jobs:
           EOF
 
           cat > app/src/main/AndroidManifest.xml <<'EOF'
-          <?xml version="1.0" encoding
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+              <uses-permission android:name="android.permission.INTERNET"/>
+
+              <application
+                  android:label="Dulle Wala Connect"
+                  android:theme="@style/AppTheme"
+                  android:usesCleartextTraffic="true">
+
+                  <activity
+                      android:name=".MainActivity"
+                      android:exported="true"
+                      android:screenOrientation="portrait">
+
+                      <intent-filter>
+                          <action android:name="android.intent.action.MAIN"/>
+                          <category android:name="android.intent.category.LAUNCHER"/>
+                      </intent-filter>
+
+                  </activity>
+
+              </application>
+          </manifest>
+          EOF
+
+          cat > app/src/main/java/com/dullewala/connect/MainActivity.java <<'EOF'
+          package com.dullewala.connect;
+
+          import android.app.Activity;
+          import android.os.Bundle;
+          import android.webkit.WebSettings;
+          import android.webkit.WebView;
+          import android.webkit.WebViewClient;
+
+          public class MainActivity extends Activity {
+
+              private WebView webView;
+
+              @Override
+              protected void onCreate(Bundle savedInstanceState) {
+                  super.onCreate(savedInstanceState);
+
+                  webView = new WebView(this);
+                  setContentView(webView);
+
+                  WebSettings settings = webView.getSettings();
+                  settings.setJavaScriptEnabled(true);
+                  settings.setDomStorageEnabled(true);
+                  settings.setDatabaseEnabled(true);
+
+                  webView.setWebViewClient(new WebViewClient());
+
+                  webView.loadUrl(
+                      "https://shaikhmuhajir12.github.io/dulle-wala-connect/"
+                  );
+              }
+
+              @Override
+              public void onBackPressed() {
+                  if (webView.canGoBack()) {
+                      webView.goBack();
+                  } else {
+                      super.onBackPressed();
+                  }
+              }
+          }
+          EOF
+
+      - name: Build
+        run: |
+          curl -L -o gradle.zip https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q gradle.zip
+          ./gradle-8.7/bin/gradle assembleDebug --no-daemon
+
+      - name: APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dulle-Wala-Connect-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
