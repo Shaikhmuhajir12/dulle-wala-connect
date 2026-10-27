@@ -8,29 +8,26 @@ permissions:
 
 jobs:
   build:
-    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
-      - name: Setup Android SDK
+      - name: Setup Android
         uses: android-actions/setup-android@v3
 
-      - name: Create Android project
+      - name: Create Gradle project
         shell: bash
         run: |
-
-          mkdir -p app/src/main/java/com/dullewala/connect
+          mkdir -p app/src/main/java/com/dullewalaconnect/app
           mkdir -p app/src/main/res/values
 
           cat > settings.gradle <<'EOF'
@@ -61,9 +58,8 @@ jobs:
           EOF
 
           cat > gradle.properties <<'EOF'
-          org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+          org.gradle.jvmargs=-Xmx2048m
           android.useAndroidX=true
-          android.nonTransitiveRClass=true
           EOF
 
           cat > app/build.gradle <<'EOF'
@@ -72,11 +68,11 @@ jobs:
           }
 
           android {
-              namespace 'com.dullewala.connect'
+              namespace 'com.dullewalaconnect.app'
               compileSdk 35
 
               defaultConfig {
-                  applicationId 'com.dullewala.connect'
+                  applicationId 'com.dullewalaconnect.app'
                   minSdk 23
                   targetSdk 35
                   versionCode 1
@@ -86,36 +82,28 @@ jobs:
           EOF
 
           cat > app/src/main/res/values/styles.xml <<'EOF'
-          <?xml version="1.0" encoding="utf-8"?>
           <resources>
-
               <style name="AppTheme"
                   parent="android:style/Theme.Material.Light.NoActionBar">
-
                   <item name="android:fontFamily">sans</item>
-                  <item name="android:windowActionModeOverlay">true</item>
                   <item name="android:statusBarColor">#000000</item>
                   <item name="android:navigationBarColor">#000000</item>
                   <item name="android:colorAccent">#D4AF37</item>
-
               </style>
-
           </resources>
           EOF
 
           cat > app/src/main/AndroidManifest.xml <<'EOF'
           <?xml version="1.0" encoding="utf-8"?>
-
-          <manifest
-              xmlns:android="http://schemas.android.com/apk/res/android">
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
               <uses-permission android:name="android.permission.INTERNET"/>
 
               <application
-                  android:allowBackup="true"
                   android:label="Dulle Wala Connect"
                   android:theme="@style/AppTheme"
-                  android:usesCleartextTraffic="true">
+                  android:usesCleartextTraffic="true"
+                  android:allowBackup="true">
 
                   <activity
                       android:name=".MainActivity"
@@ -123,13 +111,8 @@ jobs:
                       android:screenOrientation="portrait">
 
                       <intent-filter>
-
-                          <action
-                              android:name="android.intent.action.MAIN"/>
-
-                          <category
-                              android:name="android.intent.category.LAUNCHER"/>
-
+                          <action android:name="android.intent.action.MAIN"/>
+                          <category android:name="android.intent.category.LAUNCHER"/>
                       </intent-filter>
 
                   </activity>
@@ -139,8 +122,8 @@ jobs:
           </manifest>
           EOF
 
-          cat > app/src/main/java/com/dullewala/connect/MainActivity.java <<'EOF'
-          package com.dullewala.connect;
+          cat > app/src/main/java/com/dullewalaconnect/app/MainActivity.java <<'EOF'
+          package com.dullewalaconnect.app;
 
           import android.app.Activity;
           import android.os.Bundle;
@@ -154,11 +137,9 @@ jobs:
 
               @Override
               protected void onCreate(Bundle savedInstanceState) {
-
                   super.onCreate(savedInstanceState);
 
                   webView = new WebView(this);
-
                   setContentView(webView);
 
                   WebSettings settings = webView.getSettings();
@@ -168,8 +149,8 @@ jobs:
                   settings.setDatabaseEnabled(true);
                   settings.setAllowFileAccess(true);
                   settings.setAllowContentAccess(true);
-                  settings.setBuiltInZoomControls(false);
-                  settings.setDisplayZoomControls(false);
+                  settings.setLoadWithOverviewMode(true);
+                  settings.setUseWideViewPort(true);
 
                   webView.setWebViewClient(new WebViewClient());
 
@@ -180,41 +161,27 @@ jobs:
 
               @Override
               public void onBackPressed() {
-
-                  if (webView != null && webView.canGoBack()) {
-
+                  if (webView.canGoBack()) {
                       webView.goBack();
-
                   } else {
-
                       super.onBackPressed();
-
                   }
               }
           }
           EOF
 
       - name: Download Gradle
-        shell: bash
         run: |
-          curl -L \
-            -o gradle.zip \
+          curl -L -o gradle.zip \
             https://services.gradle.org/distributions/gradle-8.7-bin.zip
-
           unzip -q gradle.zip
 
       - name: Build APK
-        shell: bash
         run: |
-          ./gradle-8.7/bin/gradle \
-            assembleDebug \
-            --no-daemon \
-            --stacktrace
+          ./gradle-8.7/bin/gradle assembleDebug --no-daemon
 
-      - name: Verify APK
-        shell: bash
+      - name: Check APK
         run: |
-          test -f app/build/outputs/apk/debug/app-debug.apk
           ls -lh app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload APK
@@ -222,4 +189,3 @@ jobs:
         with:
           name: Dulle-Wala-Connect-APK
           path: app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
