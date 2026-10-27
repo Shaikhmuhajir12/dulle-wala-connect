@@ -9,13 +9,18 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
   pages-build:
     name: Pages Build and Deployment
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,11 +34,14 @@ jobs:
           path: .
 
       - name: Deploy Website
+        id: deployment
         uses: actions/deploy-pages@v4
 
   apk-build:
     name: Build and Update APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -44,19 +52,16 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android Packages
+      - name: Accept Android Licenses and Install SDK
         shell: bash
         run: |
           set -e
-          SDKMANAGER="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
-          if [ ! -x "$SDKMANAGER" ]; then
-            SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | sort -V | tail -n 1)"
-          fi
-          yes | "$SDKMANAGER" --licenses || true
-          "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)"
+          test -n "$SDKMANAGER"
+          yes | "$SDKMANAGER" --sdk_root="$ANDROID_HOME" --licenses || true
+          "$SDKMANAGER" --sdk_root="$ANDROID_HOME" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Create Android Project
         shell: bash
@@ -102,7 +107,6 @@ jobs:
           android {
               namespace 'com.dullewalaconnect.app'
               compileSdk 35
-
               defaultConfig {
                   applicationId 'com.dullewalaconnect.app'
                   minSdk 23
@@ -159,13 +163,11 @@ jobs:
                   super.onCreate(savedInstanceState);
                   WebView webView = new WebView(this);
                   setContentView(webView);
-
                   WebSettings settings = webView.getSettings();
                   settings.setJavaScriptEnabled(true);
                   settings.setDomStorageEnabled(true);
                   settings.setLoadWithOverviewMode(true);
                   settings.setUseWideViewPort(true);
-
                   webView.setWebViewClient(new WebViewClient());
                   webView.loadUrl("https://shaikhmuhajir12.github.io/dulle-wala-connect/");
               }
@@ -178,6 +180,7 @@ jobs:
           EOF
 
       - name: Download Gradle
+        shell: bash
         run: |
           set -e
           curl -fL --retry 3 -o gradle.zip https://services.gradle.org/distributions/gradle-8.7-bin.zip
