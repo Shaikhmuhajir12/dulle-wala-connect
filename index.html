@@ -1073,6 +1073,11 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
 
 <!-- TOP BAR -->
+
+<div style="background:#03351f;color:#ffe39a;padding:6px 0;font-size:11px;text-align:center;font-weight:700">
+  👀 کل وزٹرز: <span id="totalVisitors">--</span> &nbsp;|&nbsp; آج: <span id="todayVisitors">--</span>
+</div>
+
 <div class="topbar">
  <div class="container">
   <span>📍 دلے والا، تحصیل دریا خان، ضلع بھکر، پنجاب</span>
@@ -2428,6 +2433,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
    <button data-admin-tab="blood">Blood</button>
    <button data-admin-tab="jobs">Jobs</button>
    <button data-admin-tab="notices">Notices</button>
+   <button data-admin-tab="users">👥 Users</button>
 
    <button class="logout" id="adminLogout">
     🚪 Logout
@@ -4275,6 +4281,11 @@ function renderAdminData(){
  if(currentAdminTab==="notices")
   records=records.filter(x=>x.collection==="notices");
 
+ if(currentAdminTab==="users"){
+   loadAdminUsers();
+   return;
+ }
+
 
  const search=
   normalize($("adminSearch").value);
@@ -4492,6 +4503,7 @@ $("adminRecords").onclick=async e=>{
   await loadNotices();
   await loadTownUpdates();
  loadDulleWalaWeather();
+ trackVisit();
 
 
  }catch(error){
@@ -4715,6 +4727,90 @@ async function loadDulleWalaWeather(){
   }
 }
 
+
+/* =====================================================
+   VISITOR COUNTER + ADMIN USERS
+===================================================== */
+async function trackVisit(){
+  try{
+    const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    const visitRef = doc(db, "stats", "visits");
+    
+    // Get current stats
+    const snap = await getDocs(query(collection(db,"stats")));
+    let total = 0;
+    let todayCount = 0;
+    let data = {};
+    
+    if(!snap.empty){
+      snap.forEach(d => {
+        if(d.id === "visits"){
+          data = d.data();
+          total = data.total || 0;
+          todayCount = (data.daily && data.daily[today]) ? data.daily[today] : 0;
+        }
+      });
+    }
+    
+    total += 1;
+    todayCount += 1;
+    
+    const daily = data.daily || {};
+    daily[today] = todayCount;
+    
+    await setDoc(doc(db,"stats","visits"), {
+      total: total,
+      daily: daily,
+      lastVisit: serverTimestamp()
+    }, {merge:true});
+    
+    if($("totalVisitors")) $("totalVisitors").textContent = total;
+    if($("todayVisitors")) $("todayVisitors").textContent = todayCount;
+    
+  }catch(e){
+    console.log("Visit track error", e);
+    if($("totalVisitors")) $("totalVisitors").textContent = "--";
+  }
+}
+
+async function loadAdminUsers(){
+  const box = $("adminRecords");
+  if(!box) return;
+  
+  box.innerHTML = '<div class="empty">Users لوڈ ہو رہے ہیں...</div>';
+  
+  try{
+    const snap = await getDocs(collection(db,"users"));
+    let users = [];
+    snap.forEach(d => {
+      users.push({id: d.id, ...d.data()});
+    });
+    
+    // Sort newest first
+    users.sort((a,b) => (b.createdAt?.seconds||0) - (a.createdAt?.seconds||0));
+    
+    if(!users.length){
+      box.innerHTML = '<div class="empty">ابھی کوئی registered user نہیں۔</div>';
+      return;
+    }
+    
+    box.innerHTML = users.map(u => `
+      <div class="admin-record approved">
+        <span class="status approved">User</span>
+        <h3 style="margin:7px 0;color:var(--dark)">👤 ${escapeHTML(u.name || u.username || "No Name")}</h3>
+        <div class="meta">📧 ${escapeHTML(u.email || "—")}</div>
+        <div class="meta">📱 ${escapeHTML(u.phone || "—")}</div>
+        <div class="meta">🆔 ${escapeHTML(u.username || "—")}</div>
+        <div class="meta">UID: ${escapeHTML(u.uid || u.id)}</div>
+      </div>
+    `).join("");
+    
+  }catch(e){
+    console.error(e);
+    box.innerHTML = '<div class="empty">Users load نہیں ہو سکے۔ Firestore Rules چیک کریں۔</div>';
+  }
+}
+
 /* =====================================================
    INITIAL LOAD
 ===================================================== */
@@ -4727,6 +4823,7 @@ setTimeout(()=>{
  loadNotices();
  loadTownUpdates();
  loadDulleWalaWeather();
+ trackVisit();
 
 },1000);
 
