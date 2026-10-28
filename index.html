@@ -307,14 +307,19 @@ textarea{min-height:100px;resize:vertical}
  box-shadow:var(--shadow);
 }
 .category-icon{
- width:58px;height:58px;
- border-radius:17px;
+ width:62px;height:62px;
+ border-radius:20px;
  margin:auto;
  display:grid;
  place-items:center;
- font-size:29px;
- background:#eaf8f0;
+ font-size:30px;
+ background:linear-gradient(145deg,#eaf8f0,#d4f0e2);
+ box-shadow:0 6px 15px rgba(8,116,67,.12);
  animation:float 3.5s ease-in-out infinite;
+ transition:transform .3s;
+}
+.category-card:hover .category-icon{
+ transform:scale(1.12) rotate(3deg);
 }
 .category-card h3{
  color:var(--dark);
@@ -607,16 +612,24 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
 .float-wa{
  position:fixed;
- left:15px;
- bottom:15px;
+ left:18px;
+ bottom:22px;
  z-index:90;
- background:#159b55;
+ background:linear-gradient(135deg,#128C7E,#25D366);
  color:white;
- padding:11px 15px;
+ padding:13px 18px;
  border-radius:50px;
- font-size:11px;
+ font-size:12px;
  font-weight:900;
- box-shadow:0 7px 25px rgba(0,0,0,.2);
+ box-shadow:0 10px 30px rgba(37,211,102,.45);
+ display:flex;
+ align-items:center;
+ gap:8px;
+ animation:float 3s ease-in-out infinite;
+}
+.float-wa:hover{
+ transform:scale(1.05);
+ box-shadow:0 14px 35px rgba(37,211,102,.55);
 }
 
 .modal{
@@ -1007,7 +1020,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
  <div class="welcome-inner">
 
   <div class="welcome-logo">
-   <img src="Dulle Wala Connect Logo.png"
+   <img src="logo.pic.png"
         alt="Dulle Wala Connect Logo"
         onerror="this.style.display='none'">
   </div>
@@ -1021,7 +1034,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
   <div class="welcome-bar"><span></span></div>
 
-  <strong>Manage &amp; Build by Aqib Javed</strong>
+  <strong>Manage &amp; Build by Aqib Javed • مالک تیلی</strong>
 
  </div>
 </div>
@@ -1059,7 +1072,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
   <a class="brand" href="#home">
    <img class="brand-logo"
-        src="Dulle Wala Connect Logo.png"
+        src="logo.pic.png"
         alt="Dulle Wala Connect">
    <div>
     DULLE WALA CONNECT
@@ -1148,7 +1161,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
   </div>
 
   <div class="hero-card">
-   <img src="Dulle Wala Connect Logo.png" alt="Dulle Wala Connect">
+   <img src="logo.pic.png" alt="Dulle Wala Connect">
    <h2>DULLE WALA</h2>
    <h3>CONNECT</h3>
    <p>
@@ -1722,8 +1735,8 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
    <div class="admin-profile">
 
     <img class="admin-photo"
-         src="Dulle Wala Connect Logo.png"
-         alt="Dulle Wala Connect Admin">
+         src="logo.pic.png"
+         alt="Aqib Javed - Dulle Wala Connect">
 
     <div>
 
@@ -1731,27 +1744,32 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
       🛡️ OFFICIAL ADMINISTRATION
      </span>
 
-     <h2>Administration</h2>
+     <h2>Aqib Javed</h2>
 
-     <p>
-      Dulle Wala Connect کی management اور digital development
-      کا مقصد community کے لیے ایک محفوظ، منظم اور professional
-      platform بنانا ہے۔
-     </p>
-
-     <p style="color:#ffe39a">
-      <strong>Manage &amp; Build by Aqib Javed</strong>
+     <p style="color:#ffe39a;margin:4px 0 8px;font-weight:700">
+      مالک تیلی • Manage &amp; Build by Aqib Javed • مالک تیلی
      </p>
 
      <p>
+      📍 محلہ مہاجرین، وارڈ نمبر 8<br>
+      دلے والا، تحصیل دریا خان، ضلع بھکر
+     </p>
+
+     <p style="margin-top:10px">
       Platform Administration:
       User Accounts • Content Review • Business Approval •
       Blood Donor Approval • Jobs • Notices • Community Updates
      </p>
 
-     <a href="#about" class="btn btn-gold">
-      مزید معلومات
-     </a>
+     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+      <a href="https://wa.me/923432752543?text=Assalam-o-Alaikum%20Aqib%20Javed%20sahab%2C%20Dulle%20Wala%20Connect%20ke%20baare%20mein%20raabta%20kar%20raha%20hoon." 
+         target="_blank" rel="noopener" class="btn btn-gold">
+        💬 WhatsApp
+      </a>
+      <a href="tel:03432752543" class="btn btn-white">
+        📞 Call
+      </a>
+     </div>
 
     </div>
 
@@ -1906,7 +1924,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
    </p>
 
    <div class="info-box">
-    <h4>👨‍💻 Manage &amp; Build by Aqib Javed</h4>
+    <h4>👨‍💻 Manage &amp; Build by Aqib Javed • مالک تیلی</h4>
     <div style="font-size:10px;color:var(--muted)">
      Dulle Wala Connect کو بہتر بنانے اور community کو digital
      طور پر connect کرنے کے لیے بنایا گیا platform۔
@@ -1962,7 +1980,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
   <div class="footer-bottom">
    © 2026 Dulle Wala Connect — دلے والا، پنجاب، پاکستان
    <br>
-   Manage &amp; Build by Aqib Javed
+   Manage &amp; Build by Aqib Javed • مالک تیلی
   </div>
 
  </div>
@@ -1979,9 +1997,7 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
    id="whatsappFloat"
    href="#"
    target="_blank"
-   rel="noopener">
- 💬 WhatsApp
-</a>
+   rel="noopener">💬 WhatsApp</a>
 
 
 <!-- =====================================================
@@ -1998,295 +2014,132 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
   <div class="auth-icon">👤</div>
 
-  <h2>اپنا Account بنائیں</h2>
+  <h2 id="authTitle">اپنا Account بنائیں</h2>
 
-  <p>
-   Account بننے کے بعد ہی Dulle Wala Connect کی مکمل
-   website استعمال کی جا سکے گی۔
+  <p id="authSubtitle">
+   Account بننے کے بعد ہی Dulle Wala Connect کی مکمل website استعمال کی جا سکے گی۔
   </p>
 
+  <div id="accountMessages" style="margin-bottom:12px"></div>
 
   <div class="auth-tabs">
-
-   <button class="active" data-auth-tab="login">
-    Login
-   </button>
-
-   <button data-auth-tab="register">
-    Signup
-   </button>
-
-   <button data-auth-tab="phone">
-    Mobile OTP
-   </button>
-
-   <button data-auth-tab="profile">
-    Profile
-   </button>
-
- </div>
-
-
- <!-- ================= LOGIN ================= -->
-
- <form id="userLoginForm">
-
-  <div class="field">
-   <label>Email</label>
-   <input id="userLoginEmail"
-          type="email"
-          required
-          autocomplete="email">
+   <button class="active" data-auth-tab="login">Login</button>
+   <button data-auth-tab="register">Signup</button>
+   <button data-auth-tab="phone">Mobile OTP</button>
+   <button data-auth-tab="profile">Profile</button>
   </div>
 
-  <div class="field">
-   <label>Password</label>
-   <input id="userLoginPassword"
-          type="password"
-          required
-          autocomplete="current-password">
-  </div>
-
-  <button class="btn btn-primary"
-          style="width:100%"
-          type="submit">
-   🔐 Login
-  </button>
-
-  <button class="btn btn-outline"
-          style="width:100%;margin-top:8px"
-          type="button"
-          id="forgotPasswordBtn">
-   🔑 Forgot Password
-  </button>
-
-  <button class="btn btn-outline"
-          style="width:100%;margin-top:8px"
-          type="button"
-          id="googleLogin">
-   🔵 Google سے Login
-  </button>
-
- </form>
-
-
- <!-- ================= SIGNUP ================= -->
-
- <form id="userRegisterForm" class="hidden">
-
-  <div class="notice">
-   Signup کے لیے Name، Username، Email، Mobile اور
-   مضبوط Password ضروری ہے۔
-  </div>
-
-  <div class="field">
-   <label>پورا نام *</label>
-   <input id="regName"
-          required
-          maxlength="80"
-          autocomplete="name">
-  </div>
-
-  <div class="field">
-   <label>Username *</label>
-   <input id="regUsername"
-          required
-          maxlength="30"
-          pattern="[A-Za-z0-9_]+"
-          placeholder="مثلاً aqib123">
-   <div class="password-help">
-    Username میں صرف English letters، numbers اور _ استعمال کریں۔
-   </div>
-  </div>
-
-  <div class="field">
-   <label>Email *</label>
-   <input id="regEmail"
-          type="email"
-          required
-          autocomplete="email">
-  </div>
-
-  <div class="field">
-   <label>Mobile Number *</label>
-   <input id="regPhone"
-          required
-          maxlength="20"
-          placeholder="03XXXXXXXXX"
-          autocomplete="tel">
-  </div>
-
-  <div class="field">
-   <label>Password Create کریں *</label>
-   <input id="regPassword"
-          type="password"
-          required
-          minlength="8"
-          autocomplete="new-password">
-   <div class="password-help">
-    Password میں English Capital/Small letter + Number + Special Character لازمی ہے۔
-   </div>
-  </div>
-
-  <div class="field">
-   <label>Recreate / Confirm Password *</label>
-   <input id="regPassword2"
-          type="password"
-          required
-          minlength="8"
-          autocomplete="new-password">
-  </div>
-
-  <label style="display:flex;gap:7px;align-items:flex-start;font-size:9px;margin-bottom:12px">
-   <input id="regConsent"
-          type="checkbox"
-          required
-          style="width:auto;margin-top:7px">
-   میں تصدیق کرتا ہوں کہ میری دی گئی معلومات درست ہیں۔
-  </label>
-
-  <button class="btn btn-primary"
-          style="width:100%"
-          type="submit">
-   ✨ Signup Account
-  </button>
-
- </form>
-
-
- <!-- ================= PHONE OTP ================= -->
-
- <div id="phonePanel" class="hidden">
-
-  <div class="otp-box">
-
-   <h4>📱 Mobile OTP</h4>
-
-   <p>
-    Firebase Phone Authentication کے ذریعے
-    آپ کے mobile number پر SMS OTP آئے گا۔
-    WhatsApp OTP Firebase browser authentication
-    میں direct available نہیں ہے۔
-   </p>
-
-  </div>
-
-  <div class="field">
-   <label>Mobile Number</label>
-   <input id="phoneNumber"
-          placeholder="+923XXXXXXXXX">
-  </div>
-
-  <div id="recaptcha-container"></div>
-
-  <button class="btn btn-primary"
-          style="width:100%;margin-top:10px"
-          id="sendPhoneOtp"
-          type="button">
-   📲 OTP بھیجیں
-  </button>
-
-  <div id="phoneOtpArea" class="hidden">
-
-   <div class="field" style="margin-top:12px">
-    <label>OTP Code</label>
-    <input id="phoneOtp"
-           inputmode="numeric"
-           maxlength="6"
-           placeholder="6 digit OTP">
-   </div>
-
-   <button class="btn btn-gold"
-           style="width:100%"
-           id="verifyPhoneOtp"
-           type="button">
-    ✅ OTP Verify کریں
-   </button>
-
-  </div>
-
- </div>
-
-
- <!-- ================= PROFILE ================= -->
-
- <div id="profilePanel" class="hidden">
-
-  <div class="profile-note">
-   👤 آپ کی account details
-  </div>
-
-  <div id="profileView"></div>
-
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-
-   <button class="btn btn-primary" id="saveProfileBtn">
-    💾 Profile Save
-   </button>
-
-   <button class="btn btn-danger" id="logoutUserBtn">
-    🚪 Logout
-   </button>
-
-  </div>
-
- </div>
-
-
- <div class="error-box" id="accountError"></div>
- <div class="success-box" id="accountSuccess"></div>
-
- </div>
-</div>
-
-
-<!-- =====================================================
-     ADMIN LOGIN
-===================================================== -->
-<div class="modal" id="adminLoginModal">
-
- <div class="modal-box" style="max-width:430px">
-
-  <div class="modal-head">
-   <h2>🔐 Admin Login</h2>
-   <button class="close-btn" id="closeAdminLogin">✕</button>
-  </div>
-
-  <div class="auth-icon">🛡️</div>
-
-  <p style="text-align:center;color:var(--muted);font-size:10px">
-   صرف Dulle Wala Connect Administration کے لیے
-  </p>
-
-  <form id="adminLoginForm">
-
+  <!-- ================= LOGIN ================= -->
+  <form id="userLoginForm">
    <div class="field">
-    <label>Admin Email</label>
-    <input id="adminEmail" type="email" required>
+    <label>Email</label>
+    <input id="userLoginEmail" type="email" required autocomplete="email" placeholder="example@gmail.com">
    </div>
-
    <div class="field">
     <label>Password</label>
-    <input id="adminPassword" type="password" required>
+    <input id="userLoginPassword" type="password" required autocomplete="current-password" placeholder="••••••••">
+   </div>
+   <button class="btn btn-primary" style="width:100%" type="submit" id="loginBtn">
+    🔐 Login
+   </button>
+   <button class="btn btn-outline" style="width:100%;margin-top:8px" type="button" id="forgotPasswordBtn">
+    🔑 Forgot Password
+   </button>
+   <button class="btn btn-outline" style="width:100%;margin-top:8px" type="button" id="googleLogin">
+    🔵 Google سے Login
+   </button>
+  </form>
+
+  <!-- ================= SIGNUP ================= -->
+  <form id="userRegisterForm" class="hidden">
+   <div class="notice">
+    Name، Username، Email، Mobile اور مضبوط Password لازمی ہیں۔
    </div>
 
-   <button class="btn btn-primary"
-           style="width:100%"
-           type="submit">
-    🔐 Admin Login
+   <div class="field">
+    <label>پورا نام *</label>
+    <input id="regName" required maxlength="80" autocomplete="name" placeholder="آپ کا پورا نام">
+   </div>
+
+   <div class="field">
+    <label>Username *</label>
+    <input id="regUsername" required maxlength="30" pattern="[A-Za-z0-9_]+" placeholder="مثلاً aqib123">
+    <div class="password-help">صرف English letters، numbers اور _ استعمال کریں</div>
+   </div>
+
+   <div class="field">
+    <label>Email *</label>
+    <input id="regEmail" type="email" required autocomplete="email" placeholder="example@gmail.com">
+   </div>
+
+   <div class="field">
+    <label>Mobile Number *</label>
+    <input id="regPhone" required maxlength="15" placeholder="03XXXXXXXXX" autocomplete="tel">
+   </div>
+
+   <div class="field">
+    <label>Password بنائیں *</label>
+    <input id="regPassword" type="password" required minlength="8" autocomplete="new-password" placeholder="کم از کم 8 حروف">
+    <div id="passwordStrength" style="height:6px;border-radius:4px;margin-top:6px;background:#eee;overflow:hidden">
+     <div id="passwordStrengthBar" style="height:100%;width:0%;transition:width .3s,background .3s"></div>
+    </div>
+    <div class="password-help" id="passwordHelp">Capital + Small letter + Number + Special character</div>
+   </div>
+
+   <div class="field">
+    <label>Password دوبارہ لکھیں *</label>
+    <input id="regPassword2" type="password" required minlength="8" autocomplete="new-password" placeholder="Confirm Password">
+   </div>
+
+   <label style="display:flex;gap:7px;align-items:flex-start;font-size:10px;margin-bottom:14px">
+    <input id="regConsent" type="checkbox" required style="width:auto;margin-top:4px">
+    میں تصدیق کرتا ہوں کہ میری دی گئی معلومات درست ہیں۔
+   </label>
+
+   <button class="btn btn-primary" style="width:100%" type="submit" id="signupBtn">
+    ✨ Signup Account
+   </button>
+  </form>
+
+  <!-- ================= PHONE OTP ================= -->
+  <div id="phonePanel" class="hidden">
+   <div class="otp-box">
+    <h4>📱 Mobile OTP Login / Signup</h4>
+    <p>آپ کے موبائل نمبر پر SMS کے ذریعے OTP آئے گا۔</p>
+   </div>
+
+   <div class="field">
+    <label>Mobile Number (+92 format)</label>
+    <input id="phoneNumber" placeholder="+923001234567" maxlength="13">
+    <div class="password-help">مثال: +923001234567</div>
+   </div>
+
+   <div id="recaptcha-container"></div>
+
+   <button class="btn btn-primary" style="width:100%;margin-top:10px" id="sendPhoneOtp" type="button">
+    📲 OTP بھیجیں
    </button>
 
-   <div class="error-box" id="adminLoginError"></div>
+   <div id="phoneOtpArea" class="hidden" style="margin-top:14px">
+    <div class="field">
+     <label>OTP Code (6 digit)</label>
+     <input id="phoneOtp" inputmode="numeric" maxlength="6" placeholder="123456">
+    </div>
+    <button class="btn btn-gold" style="width:100%" id="verifyPhoneOtp" type="button">
+     ✅ OTP Verify کریں
+    </button>
+   </div>
+  </div>
 
-  </form>
+  <!-- ================= PROFILE ================= -->
+  <div id="profilePanel" class="hidden">
+   <div id="profileView">
+    <div class="empty">پہلے Login کریں۔</div>
+   </div>
+  </div>
 
  </div>
 </div>
-
-
-<!-- =====================================================
-     ADMIN DASHBOARD
-===================================================== -->
 <div class="modal" id="adminModal">
 
  <div class="modal-box admin-box">
@@ -2435,7 +2288,7 @@ const ADMIN_UID="CbJESrWxFEdxa9Mm2gi1P0dr6sl1";
    923432752543
 ===================================================== */
 
-const ADMIN_WHATSAPP="92XXXXXXXXXX";
+const ADMIN_WHATSAPP="923432752543";
 
 
 let currentUser=null;
@@ -2473,22 +2326,16 @@ function showToast(message){
 
 
 function showAccountError(message){
- $("accountError").textContent="❌ "+message;
- $("accountError").style.display="block";
- $("accountSuccess").style.display="none";
+  showAccountMessage("error", "❌ " + message);
 }
-
 
 function showAccountSuccess(message){
- $("accountSuccess").textContent="✅ "+message;
- $("accountSuccess").style.display="block";
- $("accountError").style.display="none";
+  showAccountMessage("success", "✅ " + message);
 }
 
-
 function clearAccountMessages(){
- $("accountError").style.display="none";
- $("accountSuccess").style.display="none";
+  const box = $("accountMessages");
+  if(box) box.innerHTML = "";
 }
 
 
@@ -2574,6 +2421,80 @@ function validPassword(password){
    ACCOUNT REQUIRED
 ===================================================== */
 
+
+/* ==================== EMAIL LOGIN ==================== */
+$("userLoginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const button = e.submitter || $("loginBtn");
+  if(button){ button.disabled = true; button.textContent = "⏳ Login..."; }
+  clearAccountMessages();
+
+  try {
+    const email = $("userLoginEmail").value.trim();
+    const password = $("userLoginPassword").value;
+
+    await signInWithEmailAndPassword(auth, email, password);
+
+    $("accountRequired").classList.remove("show");
+    $("accountModal").classList.remove("show");
+    showToast("✅ Login کامیاب");
+    showAccountMessage("success", "✅ خوش آمدید!");
+
+  } catch(error) {
+    console.error(error);
+    showAccountMessage("error", authError(error));
+  } finally {
+    if(button){ button.disabled = false; button.textContent = "🔐 Login"; }
+  }
+};
+
+/* Forgot Password */
+$("forgotPasswordBtn").onclick = async () => {
+  clearAccountMessages();
+  const email = $("userLoginEmail").value.trim();
+  if(!email){
+    showAccountMessage("error", "پہلے Email لکھیں، پھر Forgot Password دبائیں۔");
+    return;
+  }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showAccountMessage("success", "Password reset link آپ کے Email پر بھیج دیا گیا ہے۔");
+    showToast("Reset link بھیج دیا گیا");
+  } catch(error) {
+    showAccountMessage("error", authError(error));
+  }
+};
+
+/* Google Login */
+$("googleLogin").onclick = async () => {
+  clearAccountMessages();
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+
+    const profile = {
+      uid: result.user.uid,
+      name: result.user.displayName || "",
+      email: result.user.email || "",
+      username: (result.user.email || "").split("@")[0].replace(/[^a-z0-9_]/gi,"").toLowerCase(),
+      phone: result.user.phoneNumber || "",
+      method: "google",
+      createdAt: serverTimestamp()
+    };
+
+    await setDoc(doc(db,"users",result.user.uid), profile, {merge:true});
+    saveLocalProfile(result.user.uid, {...profile, createdAt: Date.now()});
+
+    $("accountRequired").classList.remove("show");
+    $("accountModal").classList.remove("show");
+    showToast("✅ Google Login کامیاب");
+  } catch(error) {
+    console.error(error);
+    showAccountMessage("error", authError(error));
+  }
+};
+
+
 function requireUser(){
 
  if(!currentUser){
@@ -2594,570 +2515,262 @@ function requireUser(){
    AUTH TABS
 ===================================================== */
 
+/* =====================================================
+   IMPROVED ACCOUNT SYSTEM
+===================================================== */
+
+function showAccountMessage(type, text){
+  const box = $("accountMessages");
+  if(!box) return;
+  box.innerHTML = `<div class="notice" style="background:${type==='error'?'#fff0f0':'#eaf8f0'};border-color:${type==='error'?'#efb7b7':'#cfe9da'};color:${type==='error'?'#c62828':'#03351f'}">${text}</div>`;
+}
+
+
 function setAuthTab(tab){
+  document.querySelectorAll("[data-auth-tab]").forEach(btn=>{
+    btn.classList.toggle("active", btn.dataset.authTab === tab);
+  });
 
- document.querySelectorAll("[data-auth-tab]").forEach(button=>{
-  button.classList.toggle(
-   "active",
-   button.dataset.authTab===tab
-  );
- });
+  $("userLoginForm").classList.toggle("hidden", tab !== "login");
+  $("userRegisterForm").classList.toggle("hidden", tab !== "register");
+  $("phonePanel").classList.toggle("hidden", tab !== "phone");
+  $("profilePanel").classList.toggle("hidden", tab !== "profile");
 
- $("userLoginForm").classList.toggle("hidden",tab!=="login");
- $("userRegisterForm").classList.toggle("hidden",tab!=="register");
- $("phonePanel").classList.toggle("hidden",tab!=="phone");
- $("profilePanel").classList.toggle("hidden",tab!=="profile");
-
- clearAccountMessages();
-
- if(tab==="profile"){
-  renderProfile();
- }
-
-}
-
-
-document.querySelectorAll("[data-auth-tab]").forEach(button=>{
- button.onclick=()=>setAuthTab(button.dataset.authTab);
-});
-
-
-/* =====================================================
-   ACCOUNT MODAL
-===================================================== */
-
-function openAccount(){
-
- $("accountRequired").classList.remove("show");
- $("accountModal").classList.add("show");
-
- if(currentUser){
-  setAuthTab("profile");
- }else{
-  setAuthTab("login");
- }
-
-}
-
-
-$("accountBtn").onclick=openAccount;
-$("openAccountBtn").onclick=openAccount;
-
-$("closeAccount").onclick=()=>{
- $("accountModal").classList.remove("show");
-};
-
-
-/* =====================================================
-   LOCAL PROFILE
-===================================================== */
-
-function profileKey(uid){
- return "dwc_profile_"+uid;
-}
-
-
-function getSavedProfile(uid){
-
- try{
-  return JSON.parse(
-   localStorage.getItem(profileKey(uid))||"null"
-  );
- }catch{
-  return null;
- }
-
-}
-
-
-function saveLocalProfile(uid,data){
-
- localStorage.setItem(
-  profileKey(uid),
-  JSON.stringify(data)
- );
-
-}
-
-
-function normalizeProfile(p,u){
-
- const saved=p||{};
-
- return {
-  uid:u?.uid||saved.uid||"",
-  name:saved.name||u?.displayName||"",
-  username:saved.username||"",
-  email:u?.email||saved.email||"",
-  phone:saved.phone||"",
-  verified:saved.verified||false
- };
-
-}
-
-
-/* =====================================================
-   SIGNUP
-===================================================== */
-
-$("userRegisterForm").onsubmit=async e=>{
-
- e.preventDefault();
-
- const button=e.submitter;
-
- button.disabled=true;
- button.textContent="⏳ Account بن رہا ہے...";
-
- clearAccountMessages();
-
- try{
-
-  const name=$("regName").value.trim();
-  const username=$("regUsername").value.trim();
-  const email=$("regEmail").value.trim();
-  const phone=$("regPhone").value.trim();
-  const password=$("regPassword").value;
-  const password2=$("regPassword2").value;
-
-  if(!/^[A-Za-z0-9_]+$/.test(username)){
-   throw new Error(
-    "Username میں صرف English letters، numbers اور underscore استعمال کریں۔"
-   );
-  }
-
-  if(password!==password2){
-   throw new Error("دونوں Password ایک جیسے ہونے چاہئیں۔");
-  }
-
-  if(!validPassword(password)){
-   throw new Error(
-    "Password میں کم از کم 8 characters، English letter، number اور special character لازمی ہے۔"
-   );
-  }
-
-
-  /* Check username */
-
-  const usernameQuery=query(
-   collection(db,"users"),
-   where("username","==",username)
-  );
-
-  const usernameSnap=await getDocs(usernameQuery);
-
-  if(!usernameSnap.empty){
-   throw new Error("یہ Username پہلے سے استعمال ہو رہا ہے۔");
-  }
-
-
-  /* Create Firebase account */
-
-  const credential=
-   await createUserWithEmailAndPassword(
-    auth,
-    email,
-    password
-   );
-
-
-  await updateProfile(
-   credential.user,
-   {displayName:name}
-  );
-
-
-  /* Save profile */
-
-  const profile={
-   uid:credential.user.uid,
-   name:name,
-   username:username,
-   email:email,
-   phone:phone,
-   createdAt:serverTimestamp()
+  const titles = {
+    login: "Login کریں",
+    register: "نیا Account بنائیں",
+    phone: "Mobile OTP",
+    profile: "آپ کا Profile"
   };
-
-
-  await setDoc(
-   doc(db,"users",credential.user.uid),
-   profile,
-   {merge:true}
-  );
-
-
-  saveLocalProfile(
-   credential.user.uid,
-   {
-    ...profile,
-    createdAt:Date.now()
-   }
-  );
-
-
-  /* Email verification */
-
-  await sendEmailVerification(
-   credential.user
-  );
-
-
-  showAccountSuccess(
-   "Account بن گیا ہے۔ آپ کے Email پر verification link بھیجا گیا ہے۔ Email verify کرکے Login کریں۔"
-  );
-
-
-  showToast(
-   "✅ Account بن گیا۔ Email verification بھیج دی گئی ہے۔"
-  );
-
-
-  e.target.reset();
-
-
- }catch(error){
-
-  console.error(error);
-  showAccountError(authError(error));
-
- }finally{
-
-  button.disabled=false;
-  button.textContent="✨ Signup Account";
-
- }
-
-};
-
-
-/* =====================================================
-   EMAIL LOGIN
-===================================================== */
-
-$("userLoginForm").onsubmit=async e=>{
-
- e.preventDefault();
-
- const button=e.submitter;
-
- button.disabled=true;
- button.textContent="⏳ Login...";
-
- clearAccountMessages();
-
- try{
-
-  const email=$("userLoginEmail").value.trim();
-  const password=$("userLoginPassword").value;
-
-  const result=
-   await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-   );
-
-
-  /*
-   Email verification check
-  */
-
-  if(!result.user.emailVerified){
-
-   showAccountSuccess(
-    "آپ کا Email ابھی verify نہیں ہوا۔ پہلے Email میں verification link کھولیں۔"
-   );
-
-   await sendEmailVerification(result.user);
-
-   await signOut(auth);
-
-   return;
-  }
-
-
-  $("accountModal").classList.remove("show");
-  $("accountRequired").classList.remove("show");
-
-  showToast("✅ Login کامیاب ہوگیا۔");
-
- }catch(error){
-
-  console.error(error);
-  showAccountError(authError(error));
-
- }finally{
-
-  button.disabled=false;
-  button.textContent="🔐 Login";
-
- }
-
-};
-
-
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
-
-$("forgotPasswordBtn").onclick=async()=>{
-
- const email=$("userLoginEmail").value.trim();
-
- if(!email){
-
-  showAccountError(
-   "Forgot Password کے لیے پہلے اپنا Email لکھیں۔"
-  );
-
-  return;
- }
-
- try{
-
-  await sendPasswordResetEmail(
-   auth,
-   email
-  );
-
-  showAccountSuccess(
-   "Password reset کرنے کا link آپ کے Email پر بھیج دیا گیا ہے۔"
-  );
-
-  showToast("📧 Password reset email بھیجی گئی۔");
-
- }catch(error){
-
-  showAccountError(
-   authError(error)
-  );
-
- }
-
-};
-
-
-/* =====================================================
-   GOOGLE LOGIN
-===================================================== */
-
-$("googleLogin").onclick=async()=>{
-
- try{
-
-  const provider=new GoogleAuthProvider();
-
-  const result=
-   await signInWithPopup(
-    auth,
-    provider
-   );
-
-  const old=
-   getSavedProfile(result.user.uid)||{};
-
-  const profile={
-   ...old,
-   uid:result.user.uid,
-   name:result.user.displayName||old.name||"",
-   email:result.user.email||old.email||""
+  const subs = {
+    login: "اپنا Email اور Password ڈال کر Login کریں۔",
+    register: "مکمل معلومات دے کر نیا Account بنائیں۔",
+    phone: "اپنے موبائل نمبر پر OTP حاصل کریں۔",
+    profile: "اپنی معلومات دیکھیں اور اپڈیٹ کریں۔"
   };
+  if($("authTitle")) $("authTitle").textContent = titles[tab] || "Account";
+  if($("authSubtitle")) $("authSubtitle").textContent = subs[tab] || "";
+  clearAccountMessages();
+}
 
+/* Password Strength */
+function updatePasswordStrength(){
+  const pass = $("regPassword")?.value || "";
+  const bar = $("passwordStrengthBar");
+  const help = $("passwordHelp");
+  if(!bar) return;
 
-  saveLocalProfile(
-   result.user.uid,
-   profile
-  );
+  let score = 0;
+  if(pass.length >= 8) score++;
+  if(/[a-z]/.test(pass)) score++;
+  if(/[A-Z]/.test(pass)) score++;
+  if(/\d/.test(pass)) score++;
+  if(/[^A-Za-z0-9]/.test(pass)) score++;
 
+  const widths = ["0%","20%","40%","60%","80%","100%"];
+  const colors = ["#eee","#ef5350","#ff9800","#ffc107","#8bc34a","#4caf50"];
+  const texts = [
+    "Password لکھیں",
+    "بہت کمزور",
+    "کمزور",
+    "درمیانہ",
+    "اچھا",
+    "بہت مضبوط ✓"
+  ];
 
-  await setDoc(
-   doc(db,"users",result.user.uid),
-   profile,
-   {merge:true}
-  );
+  bar.style.width = widths[score];
+  bar.style.background = colors[score];
+  if(help) help.textContent = texts[score];
+}
 
+/* Format Phone to +92 */
+function formatToPlus92(num){
+  let p = (num || "").replace(/\D/g,"");
+  if(p.startsWith("92") && p.length === 12) return "+" + p;
+  if(p.startsWith("0") && p.length === 11) return "+92" + p.substring(1);
+  if(p.length === 10) return "+92" + p;
+  if(p.startsWith("3") && p.length === 10) return "+92" + p;
+  return num;
+}
 
-  $("accountModal").classList.remove("show");
-  $("accountRequired").classList.remove("show");
+/* ==================== SIGNUP ==================== */
+$("userRegisterForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const button = $("signupBtn");
+  button.disabled = true;
+  button.textContent = "⏳ Account بن رہا ہے...";
+  clearAccountMessages();
 
-  showToast("✅ Google Login کامیاب ہوگیا۔");
+  try {
+    const name = $("regName").value.trim();
+    const username = $("regUsername").value.trim().toLowerCase();
+    const email = $("regEmail").value.trim();
+    let phone = $("regPhone").value.trim();
+    const password = $("regPassword").value;
+    const password2 = $("regPassword2").value;
 
- }catch(error){
-
-  showAccountError(
-   authError(error)
-  );
-
- }
-
-};
-
-
-/* =====================================================
-   PHONE OTP
-===================================================== */
-
-async function setupRecaptcha(){
-
- if(recaptchaVerifier && recaptchaPromise){
-
-  await recaptchaPromise;
-
-  return recaptchaVerifier;
- }
-
- $("recaptcha-container").innerHTML="";
-
- recaptchaVerifier=
-  new RecaptchaVerifier(
-   auth,
-   "recaptcha-container",
-   {
-    size:"normal",
-
-    callback:()=>{},
-
-    "expired-callback":()=>{
-
-     try{
-      recaptchaVerifier?.clear();
-     }catch{}
-
-     recaptchaVerifier=null;
-     recaptchaPromise=null;
-
+    if(!/^[A-Za-z0-9_]+$/.test(username)){
+      throw new Error("Username میں صرف English letters، numbers اور underscore استعمال کریں۔");
+    }
+    if(password !== password2){
+      throw new Error("دونوں Password ایک جیسے ہونے چاہئیں۔");
+    }
+    if(!validPassword(password)){
+      throw new Error("Password میں کم از کم 8 characters، letter، number اور special character لازمی ہے۔");
     }
 
-   }
-  );
+    // Format phone
+    phone = formatToPlus92(phone);
 
- recaptchaPromise=
-  recaptchaVerifier.render();
+    // Check username uniqueness
+    const usernameQuery = query(collection(db,"users"), where("username","==",username));
+    const usernameSnap = await getDocs(usernameQuery);
+    if(!usernameSnap.empty){
+      throw new Error("یہ Username پہلے سے استعمال ہو رہا ہے۔ کوئی اور Username چنیں۔");
+    }
 
- await recaptchaPromise;
+    // Create account
+    const credential = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(credential.user, {displayName: name});
 
- return recaptchaVerifier;
+    const profile = {
+      uid: credential.user.uid,
+      name,
+      username,
+      email,
+      phone,
+      createdAt: serverTimestamp(),
+      method: "email"
+    };
+
+    await setDoc(doc(db,"users",credential.user.uid), profile, {merge:true});
+    saveLocalProfile(credential.user.uid, {...profile, createdAt: Date.now()});
+
+    // Send verification
+    try {
+      await sendEmailVerification(credential.user);
+    } catch(err){
+      console.warn("Email verification failed", err);
+    }
+
+    showAccountMessage("success", "✅ Account کامیابی سے بن گیا! آپ کے Email پر verification link بھیجا گیا ہے۔ اب Profile مکمل کریں۔");
+    showToast("✅ Account بن گیا!");
+
+    e.target.reset();
+    updatePasswordStrength();
+
+    // Auto open Profile tab
+    setTimeout(() => setAuthTab("profile"), 800);
+
+  } catch(error) {
+    console.error(error);
+    showAccountMessage("error", authError(error));
+  } finally {
+    button.disabled = false;
+    button.textContent = "✨ Signup Account";
+  }
+};
+
+/* Password strength live */
+document.addEventListener("input", (e) => {
+  if(e.target && e.target.id === "regPassword"){
+    updatePasswordStrength();
+  }
+});
+
+/* ==================== PHONE OTP ==================== */
+async function setupRecaptcha(){
+  if(recaptchaVerifier){
+    try { recaptchaVerifier.clear(); } catch(e){}
+  }
+  recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+    size: "normal",
+    callback: () => {},
+    "expired-callback": () => {
+      recaptchaVerifier = null;
+    }
+  });
+  await recaptchaVerifier.render();
+  return recaptchaVerifier;
 }
 
+$("sendPhoneOtp").onclick = async () => {
+  const button = $("sendPhoneOtp");
+  button.disabled = true;
+  button.textContent = "⏳ OTP بھیجا جا رہا ہے...";
+  clearAccountMessages();
 
-$("sendPhoneOtp").onclick=async()=>{
+  try {
+    let phone = $("phoneNumber").value.trim();
+    phone = formatToPlus92(phone);
 
- const button=$("sendPhoneOtp");
+    if(!/^\+92\d{10}$/.test(phone)){
+      throw new Error("Mobile number +923XXXXXXXXX format میں لکھیں (مثال: +923001234567)");
+    }
 
- button.disabled=true;
- button.textContent="⏳ OTP بھیجا جا رہا ہے...";
+    $("phoneNumber").value = phone; // auto format
 
- try{
+    const verifier = await setupRecaptcha();
+    confirmationResult = await signInWithPhoneNumber(auth, phone, verifier);
 
-  const phone=$("phoneNumber").value.trim();
+    $("phoneOtpArea").classList.remove("hidden");
+    showAccountMessage("success", "📲 OTP آپ کے موبائل پر بھیج دیا گیا ہے۔");
+    showToast("OTP بھیج دیا گیا");
 
-  if(!/^\+92\d{10}$/.test(phone)){
-   throw new Error(
-    "Mobile number +923XXXXXXXXX format میں لکھیں۔"
-   );
+  } catch(error) {
+    console.error(error);
+    showAccountMessage("error", authError(error));
+    // reset recaptcha on error
+    try { if(recaptchaVerifier) recaptchaVerifier.clear(); } catch(e){}
+    recaptchaVerifier = null;
+  } finally {
+    button.disabled = false;
+    button.textContent = "📲 OTP بھیجیں";
   }
-
-  const verifier=
-   await setupRecaptcha();
-
-  confirmationResult=
-   await signInWithPhoneNumber(
-    auth,
-    phone,
-    verifier
-   );
-
-
-  $("phoneOtpArea").classList.remove("hidden");
-
-  showAccountSuccess(
-   "📲 OTP آپ کے mobile number پر SMS کے ذریعے بھیج دیا گیا ہے۔"
-  );
-
-
- }catch(error){
-
-  console.error(error);
-
-  showAccountError(
-   authError(error)
-  );
-
- }finally{
-
-  button.disabled=false;
-  button.textContent="📲 OTP بھیجیں";
-
- }
-
 };
 
+$("verifyPhoneOtp").onclick = async () => {
+  const button = $("verifyPhoneOtp");
+  button.disabled = true;
+  button.textContent = "⏳ Verify ہو رہا ہے...";
+  clearAccountMessages();
 
-$("verifyPhoneOtp").onclick=async()=>{
+  try {
+    if(!confirmationResult) throw new Error("پہلے OTP بھیجیں۔");
 
- try{
+    const otp = $("phoneOtp").value.trim();
+    if(!/^\d{6}$/.test(otp)) throw new Error("6 digit OTP لکھیں۔");
 
-  if(!confirmationResult){
-   throw new Error("پہلے OTP بھیجیں۔");
+    const result = await confirmationResult.confirm(otp);
+    const old = getSavedProfile(result.user.uid) || {};
+
+    const profile = {
+      ...old,
+      uid: result.user.uid,
+      phone: result.user.phoneNumber || old.phone || "",
+      name: old.name || "",
+      username: old.username || "",
+      email: old.email || result.user.email || "",
+      method: "phone",
+      verified: true
+    };
+
+    await setDoc(doc(db,"users",result.user.uid), profile, {merge:true});
+    saveLocalProfile(result.user.uid, profile);
+
+    $("accountRequired").classList.remove("show");
+    showAccountMessage("success", "✅ Mobile OTP Login کامیاب! اب Profile مکمل کریں۔");
+    showToast("✅ Login کامیاب");
+
+    setTimeout(() => setAuthTab("profile"), 600);
+
+  } catch(error) {
+    showAccountMessage("error", authError(error));
+  } finally {
+    button.disabled = false;
+    button.textContent = "✅ OTP Verify کریں";
   }
-
-  const otp=$("phoneOtp").value.trim();
-
-  if(!/^\d{6}$/.test(otp)){
-   throw new Error("6 digit OTP لکھیں۔");
-  }
-
-  const result=
-   await confirmationResult.confirm(otp);
-
-  const old=
-   getSavedProfile(result.user.uid)||{};
-
-  const profile={
-   ...old,
-   uid:result.user.uid,
-   phone:result.user.phoneNumber||old.phone||"",
-   name:old.name||"",
-   username:old.username||"",
-   email:old.email||""
-  };
-
-
-  saveLocalProfile(
-   result.user.uid,
-   profile
-  );
-
-
-  await setDoc(
-   doc(db,"users",result.user.uid),
-   profile,
-   {merge:true}
-  );
-
-
-  $("accountRequired").classList.remove("show");
-
-  showToast(
-   "✅ Mobile OTP Login کامیاب ہوگیا۔"
-  );
-
-  setAuthTab("profile");
-
- }catch(error){
-
-  showAccountError(
-   authError(error)
-  );
-
- }
-
 };
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
 
 function renderProfile(){
 
@@ -4583,13 +4196,8 @@ setTimeout(()=>{
  $("welcomeScreen")
   .classList.add("welcome-hide");
 
-
- if(!currentUser){
-
-  $("accountRequired")
-   .classList.add("show");
-
- }
+ // Account Required اب زبردستی نہیں کھلے گا
+ // صرف form submit کرنے پر requireUser() چلے گا
 
 },5200);
 
