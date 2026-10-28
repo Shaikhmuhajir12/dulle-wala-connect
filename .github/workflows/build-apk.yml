@@ -38,13 +38,79 @@ jobs:
         uses: actions/deploy-pages@v4
 
   apk-build:
-    name: Build and Update APK
+    name: Build APK with Custom App Icon
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Install Image Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pil
+
+      - name: Create App Icons from Uploaded JPG
+        shell: bash
+        run: |
+          set -e
+          test -f "IMG-20261028-WA3060.jpg"
+          mkdir -p app/src/main/res
+          cat > /tmp/make_icons.py <<'PY'
+          from PIL import Image, ImageDraw
+          from pathlib import Path
+
+          source = Path("IMG-20261028-WA3060.jpg")
+          image = Image.open(source).convert("RGBA")
+
+          width, height = image.size
+          side = min(width, height)
+          left = (width - side) // 2
+          top = (height - side) // 2
+
+          image = image.crop(
+              (left, top, left + side, top + side)
+          )
+          image = image.resize(
+              (512, 512), Image.Resampling.LANCZOS
+          )
+
+          sizes = {
+              "mdpi": 48,
+              "hdpi": 72,
+              "xhdpi": 96,
+              "xxhdpi": 144,
+              "xxxhdpi": 192,
+          }
+
+          for density, size in sizes.items():
+              folder = Path(
+                  f"app/src/main/res/mipmap-{density}"
+              )
+              folder.mkdir(parents=True, exist_ok=True)
+
+              icon = image.resize(
+                  (size, size), Image.Resampling.LANCZOS
+              )
+              icon.save(folder / "ic_launcher.png")
+
+              round_icon = icon.copy()
+              mask = Image.new("L", (size, size), 0)
+              draw = ImageDraw.Draw(mask)
+              draw.ellipse(
+                  (0, 0, size - 1, size - 1),
+                  fill=255
+              )
+              round_icon.putalpha(mask)
+              round_icon.save(
+                  folder / "ic_launcher_round.png"
+              )
+
+          print("App icons created successfully.")
+          PY
+          python3 /tmp/make_icons.py
 
       - name: Setup Java 17
         uses: actions/setup-java@v4
@@ -107,12 +173,13 @@ jobs:
           android {
               namespace 'com.dullewalaconnect.app'
               compileSdk 35
+
               defaultConfig {
                   applicationId 'com.dullewalaconnect.app'
                   minSdk 23
                   targetSdk 35
-                  versionCode 1
-                  versionName '1.0'
+                  versionCode 2
+                  versionName '1.1'
               }
           }
           EOF
@@ -120,8 +187,8 @@ jobs:
           cat > app/src/main/res/values/styles.xml <<'EOF'
           <resources>
               <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
-                  <item name="android:statusBarColor">#000000</item>
-                  <item name="android:navigationBarColor">#000000</item>
+                  <item name="android:statusBarColor">#075C36</item>
+                  <item name="android:navigationBarColor">#075C36</item>
                   <item name="android:colorAccent">#D4AF37</item>
               </style>
           </resources>
@@ -131,14 +198,19 @@ jobs:
           <?xml version="1.0" encoding="utf-8"?>
           <manifest xmlns:android="http://schemas.android.com/apk/res/android">
               <uses-permission android:name="android.permission.INTERNET"/>
+
               <application
                   android:label="Dulle Wala Connect"
+                  android:icon="@mipmap/ic_launcher"
+                  android:roundIcon="@mipmap/ic_launcher_round"
                   android:theme="@style/AppTheme"
                   android:usesCleartextTraffic="true">
+
                   <activity
                       android:name=".MainActivity"
                       android:exported="true"
                       android:screenOrientation="portrait">
+
                       <intent-filter>
                           <action android:name="android.intent.action.MAIN"/>
                           <category android:name="android.intent.category.LAUNCHER"/>
@@ -161,15 +233,20 @@ jobs:
               @Override
               protected void onCreate(Bundle savedInstanceState) {
                   super.onCreate(savedInstanceState);
+
                   WebView webView = new WebView(this);
                   setContentView(webView);
+
                   WebSettings settings = webView.getSettings();
                   settings.setJavaScriptEnabled(true);
                   settings.setDomStorageEnabled(true);
                   settings.setLoadWithOverviewMode(true);
                   settings.setUseWideViewPort(true);
+
                   webView.setWebViewClient(new WebViewClient());
-                  webView.loadUrl("https://shaikhmuhajir12.github.io/dulle-wala-connect/");
+                  webView.loadUrl(
+                      "https://shaikhmuhajir12.github.io/dulle-wala-connect/"
+                  );
               }
 
               @Override
