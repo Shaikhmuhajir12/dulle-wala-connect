@@ -4638,15 +4638,26 @@ if(
 ===================================================== */
 
 setTimeout(()=>{
- $("welcomeScreen").classList.add("welcome-hide");
- // Account Required اب زبردستی نہیں کھلے گا
+  const welcome = document.getElementById("welcomeScreen");
+  if(welcome){
+    welcome.classList.add("welcome-hide");
+    setTimeout(()=>{ welcome.style.display = "none"; }, 800);
+  }
+
+  // Welcome کے بعد Account modal خود بخود کھلے (بند بھی کیا جا سکتا ہے)
+  setTimeout(()=>{
+    if(!currentUser){
+      openAccount();          // Account modal کھولے
+      setAuthTab("login");    // Login tab دکھائے
+    }
+  }, 900);
 }, 5000);
 
-// Extra safety hide
+// Extra safety
 setTimeout(()=>{
   const w = document.getElementById("welcomeScreen");
   if(w){ w.style.display = "none"; }
-}, 7000);
+}, 7500);
 
 
 
