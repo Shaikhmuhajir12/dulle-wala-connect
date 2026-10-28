@@ -1088,8 +1088,8 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
     👤 Account
    </button>
 
-   <button class="btn btn-dark" id="adminLoginBtn">
-    🔐 Admin
+   <button class="btn btn-gold" id="adminLoginBtn" style="font-weight:900;padding:10px 16px">
+    🔐 Admin Login
    </button>
   </nav>
 
@@ -1124,11 +1124,16 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
     digital platform پر منظم کرتا ہے۔
    </p>
 
+
    <div class="hero-buttons">
     <a class="btn btn-gold" href="#categories">🔎 کیٹیگریز</a>
     <a class="btn btn-white" href="#register">＋ کاروبار شامل کریں</a>
     <a class="btn btn-outline" href="#blood">🩸 Blood Donors</a>
+    <button class="btn btn-primary" id="heroAccountBtn" style="cursor:pointer">
+     👤 Account بنائیں / Login
+    </button>
    </div>
+
 
    <div class="hero-stats">
     <div class="hero-stat">
@@ -4580,6 +4585,9 @@ onAuthStateChanged(
    MENU
 ===================================================== */
 
+if($("heroAccountBtn")){
+  $("heroAccountBtn").onclick = openAccount;
+}
 $("menuBtn").onclick=()=>{
  $("navlinks").classList.toggle("open");
 };
