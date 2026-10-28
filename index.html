@@ -78,13 +78,13 @@ header{
  direction:ltr;
 }
 .brand-logo{
- width:56px;
- height:56px;
- border-radius:18px;
+ width:58px;
+ height:58px;
+ border-radius:16px;
  object-fit:cover;
- border:2px solid var(--gold);
- box-shadow:0 7px 25px rgba(3,75,44,.2);
- animation:float 3s infinite;
+ border:2.5px solid var(--gold);
+ box-shadow:0 8px 22px rgba(3,75,44,.25);
+ animation:float 3.2s ease-in-out infinite;
 }
 .brand small{
  display:block;
@@ -126,11 +126,16 @@ header{
  justify-content:center;
  gap:7px;
  border:0;
- border-radius:11px;
- padding:10px 15px;
+ border-radius:12px;
+ padding:11px 18px;
  font-size:12px;
  font-weight:900;
+ letter-spacing:.3px;
+ box-shadow:0 4px 12px rgba(0,0,0,.08);
+ transition:all .25s ease;
 }
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
 .btn-primary{background:var(--green);color:white}
 .btn-primary:hover{background:var(--dark);transform:translateY(-1px)}
 .btn-gold{background:var(--gold);color:#17251d}
@@ -291,21 +296,32 @@ textarea{min-height:100px;resize:vertical}
  gap:14px;
 }
 .category-card{
- background:white;
+ background:linear-gradient(145deg,#ffffff,#f4fbf7);
  border:1px solid var(--border);
- border-radius:18px;
- padding:20px 10px;
+ border-radius:22px;
+ padding:22px 12px;
  text-align:center;
  cursor:pointer;
- box-shadow:0 5px 18px rgba(5,80,46,.04);
+ box-shadow:0 8px 25px rgba(5,80,46,.06);
  position:relative;
  overflow:hidden;
+ transition:all .35s cubic-bezier(.2,.8,.2,1);
+}
+.category-card:before{
+ content:"";
+ position:absolute;
+ top:0;left:0;right:0;
+ height:4px;
+ background:linear-gradient(90deg,var(--green),var(--gold));
+ opacity:0;
+ transition:.3s;
 }
 .category-card:hover{
- transform:translateY(-5px);
+ transform:translateY(-8px) scale(1.02);
  border-color:var(--gold);
- box-shadow:var(--shadow);
+ box-shadow:0 18px 40px rgba(8,116,67,.15);
 }
+.category-card:hover:before{opacity:1}
 .category-icon{
  width:62px;height:62px;
  border-radius:20px;
@@ -339,11 +355,19 @@ textarea{min-height:100px;resize:vertical}
  gap:15px;
 }
 .data-card{
- background:white;
+ background:linear-gradient(160deg,#ffffff 0%,#f7fcf9 100%);
  border:1px solid var(--border);
- border-radius:17px;
- padding:18px;
- box-shadow:0 5px 18px rgba(5,80,46,.05);
+ border-radius:20px;
+ padding:20px;
+ box-shadow:0 8px 28px rgba(5,80,46,.07);
+ transition:all .3s ease;
+ position:relative;
+ overflow:hidden;
+}
+.data-card:hover{
+ transform:translateY(-5px);
+ box-shadow:0 16px 40px rgba(8,116,67,.14);
+ border-color:#c5e0d0;
 }
 .data-card h3{
  color:var(--dark);
@@ -612,24 +636,30 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
 .float-wa{
  position:fixed;
- left:18px;
- bottom:22px;
- z-index:90;
- background:linear-gradient(135deg,#128C7E,#25D366);
+ left:16px;
+ bottom:20px;
+ z-index:999;
+ background:linear-gradient(135deg,#128C7E 0%,#25D366 100%);
  color:white;
- padding:13px 18px;
+ padding:14px 20px;
  border-radius:50px;
- font-size:12px;
+ font-size:13px;
  font-weight:900;
- box-shadow:0 10px 30px rgba(37,211,102,.45);
+ box-shadow:0 12px 35px rgba(37,211,102,.5), 0 0 0 4px rgba(37,211,102,.15);
  display:flex;
  align-items:center;
- gap:8px;
- animation:float 3s ease-in-out infinite;
+ gap:9px;
+ animation:floatPulse 2.8s ease-in-out infinite;
+ text-decoration:none;
+ border:2px solid rgba(255,255,255,.25);
 }
 .float-wa:hover{
- transform:scale(1.05);
- box-shadow:0 14px 35px rgba(37,211,102,.55);
+ transform:scale(1.08) translateY(-3px);
+ box-shadow:0 18px 40px rgba(37,211,102,.6);
+}
+@keyframes floatPulse{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-6px)}
 }
 
 .modal{
@@ -877,15 +907,15 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
  padding:25px;
 }
 .welcome-logo{
- width:150px;
- height:150px;
+ width:170px;
+ height:170px;
  margin:auto;
- border-radius:42px;
+ border-radius:38px;
  overflow:hidden;
- border:3px solid var(--gold);
- background:rgba(255,255,255,.1);
- box-shadow:0 15px 55px rgba(0,0,0,.35);
- animation:welcomeLogo 2.2s infinite;
+ border:4px solid var(--gold);
+ background:rgba(255,255,255,.12);
+ box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 0 8px rgba(214,169,54,.15);
+ animation:welcomeLogo 2.5s ease-in-out infinite;
 }
 .welcome-logo img{
  width:100%;
@@ -1996,9 +2026,12 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 ===================================================== -->
 <a class="float-wa"
    id="whatsappFloat"
-   href="#"
+   href="https://wa.me/923432752543?text=Assalam-o-Alaikum%20%2C%20Dulle%20Wala%20Connect%20se%20raabta%20kar%20raha%20hoon."
    target="_blank"
-   rel="noopener">💬 WhatsApp</a>
+   rel="noopener">
+   <span style="font-size:20px">💬</span>
+   <span>WhatsApp</span>
+</a>
 
 
 <!-- =====================================================
@@ -4187,30 +4220,7 @@ if(
 }
 
 
-/* =====================================================
-   WELCOME PAGE
-   5 SECOND ANIMATION
-===================================================== */
-
-/* =====================================================
-   WELCOME PAGE - Reliable Hide
-===================================================== */
-setTimeout(function(){
-  try {
-    var welcome = document.getElementById("welcomeScreen");
-    if(welcome){
-      welcome.classList.add("welcome-hide");
-      // Extra safety after transition
-      setTimeout(function(){
-        welcome.style.display = "none";
-      }, 900);
-    }
-  } catch(e){
-    console.log("Welcome hide error:", e);
-    var w = document.getElementById("welcomeScreen");
-    if(w) w.style.display = "none";
-  }
-}, 5000);
+/* Welcome hide moved outside module */
 
 
 /* =====================================================
@@ -4228,6 +4238,36 @@ setTimeout(()=>{
 },1000);
 
 
+</script>
+
+
+<!-- =====================================================
+     WELCOME SCREEN - Independent Hide (No dependency)
+===================================================== -->
+<script>
+(function(){
+  // This runs even if Firebase or other scripts fail
+  setTimeout(function(){
+    var welcome = document.getElementById("welcomeScreen");
+    if(welcome){
+      welcome.classList.add("welcome-hide");
+      setTimeout(function(){
+        welcome.style.display = "none";
+        welcome.style.visibility = "hidden";
+      }, 800);
+    }
+  }, 5000);
+
+  // Extra safety: force hide after 7 seconds no matter what
+  setTimeout(function(){
+    var welcome = document.getElementById("welcomeScreen");
+    if(welcome){
+      welcome.style.display = "none";
+      welcome.style.visibility = "hidden";
+      welcome.style.opacity = "0";
+    }
+  }, 7000);
+})();
 </script>
 
 </body>
