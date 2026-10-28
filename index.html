@@ -1971,6 +1971,65 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
 
 <!-- FOOTER -->
+
+<!-- =====================================================
+     DULLE WALA WEATHER + LIVE LOCATION
+===================================================== -->
+<section class="section section-white" id="weather-location">
+ <div class="container">
+  <div class="section-head">
+   <div class="mini">LIVE INFO • دلے والا</div>
+   <h2>🌤️ موسم اور لوکیشن</h2>
+   <p>دلے والا کا موجودہ موسم اور نقشہ</p>
+  </div>
+
+  <div class="form-layout">
+   <!-- Weather Card -->
+   <div class="form-card" style="text-align:center">
+    <h3>🌤️ آج کا موسم</h3>
+    <div id="weatherBox" style="padding:20px 0">
+     <div style="font-size:48px;margin-bottom:8px" id="weatherIcon">🌡️</div>
+     <div style="font-size:32px;font-weight:900;color:var(--dark)" id="weatherTemp">--°C</div>
+     <div style="color:var(--muted);font-size:14px;margin-top:6px" id="weatherDesc">لوڈ ہو رہا ہے...</div>
+     <div style="display:flex;justify-content:center;gap:18px;margin-top:16px;font-size:12px;color:var(--muted)">
+      <span>💧 <span id="weatherHumidity">--</span>%</span>
+      <span>💨 <span id="weatherWind">--</span> km/h</span>
+     </div>
+    </div>
+    <p style="font-size:10px;color:var(--muted);margin-top:10px">
+     دلے والا • تحصیل دریا خان • ضلع بھکر
+    </p>
+   </div>
+
+   <!-- Location Card -->
+   <div class="form-card">
+    <h3>📍 دلے والا Live Location</h3>
+    <div style="border-radius:16px;overflow:hidden;margin-top:12px;border:1px solid var(--border)">
+     <iframe 
+       width="100%" 
+       height="260" 
+       style="border:0" 
+       loading="lazy"
+       allowfullscreen
+       referrerpolicy="no-referrer-when-downgrade"
+       src="https://www.openstreetmap.org/export/embed.html?bbox=71.10%2C31.50%2C71.25%2C31.62&layer=mapnik&marker=31.56%2C71.17">
+     </iframe>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+     <a class="btn btn-primary" target="_blank" rel="noopener"
+        href="https://www.google.com/maps?q=Dulle+Wala,+Bhakkar,+Punjab">
+       🗺️ Google Maps
+     </a>
+     <a class="btn btn-outline" target="_blank" rel="noopener"
+        href="https://www.openstreetmap.org/?mlat=31.56&mlon=71.17#map=14/31.56/71.17">
+       🌍 OpenStreetMap
+     </a>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
 <footer>
  <div class="container">
 
@@ -2304,6 +2363,40 @@ const firebaseConfig={
 };
 
 const app=initializeApp(firebaseConfig);
+
+/* =====================================================
+   BASIC HELPERS (Critical - Do not remove)
+===================================================== */
+const $ = (id) => document.getElementById(id);
+
+function showToast(message){
+  const t = $("toast");
+  if(!t) return;
+  t.textContent = message;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 3200);
+}
+
+function escapeHTML(str){
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function normalize(str){
+  return String(str || "").toLowerCase().trim();
+}
+
+function openAccount(){
+  $("accountModal")?.classList.add("show");
+  setAuthTab("login");
+}
+
+/* =====================================================
+
 const auth=getAuth(app);
 const db=getFirestore(app);
 
@@ -4050,6 +4143,7 @@ $("adminRecords").onclick=async e=>{
   await loadJobs();
   await loadNotices();
   await loadTownUpdates();
+ loadDulleWalaWeather();
 
 
  }catch(error){
@@ -4176,6 +4270,18 @@ onAuthStateChanged(
    MENU
 ===================================================== */
 
+
+// Account buttons
+if($("openAccountBtn")){
+  $("openAccountBtn").onclick = openAccount;
+}
+if($("accountBtn")){
+  // already handled in onAuthStateChanged, but ensure
+}
+if($("closeAccount")){
+  $("closeAccount").onclick = () => $("accountModal").classList.remove("show");
+}
+
 $("menuBtn").onclick=()=>{
  $("navlinks").classList.toggle("open");
 };
@@ -4220,6 +4326,50 @@ if(
 }
 
 
+
+/* =====================================================
+   DULLE WALA WEATHER (Open-Meteo - Free)
+===================================================== */
+async function loadDulleWalaWeather(){
+  try{
+    // Approximate coordinates for Dulle Wala, Bhakkar
+    const lat = 31.56;
+    const lon = 71.17;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FKarachi`;
+    
+    const res = await fetch(url);
+    const data = await res.json();
+    const c = data.current;
+    
+    const codes = {
+      0: ["☀️", "صاف موسم"],
+      1: ["🌤️", "زیادہ تر صاف"],
+      2: ["⛅", "جزوی ابر آلود"],
+      3: ["☁️", "ابر آلود"],
+      45: ["🌫️", "دھند"],
+      48: ["🌫️", "دھند"],
+      51: ["🌦️", "ہلکی بارش"],
+      61: ["🌧️", "بارش"],
+      63: ["🌧️", "تیز بارش"],
+      80: ["🌦️", "بونداباندی"],
+      95: ["⛈️", "طوفانی موسم"]
+    };
+    
+    const code = c.weather_code;
+    const info = codes[code] || codes[2] || ["🌡️", "موسم"];
+    
+    if($("weatherIcon")) $("weatherIcon").textContent = info[0];
+    if($("weatherTemp")) $("weatherTemp").textContent = Math.round(c.temperature_2m) + "°C";
+    if($("weatherDesc")) $("weatherDesc").textContent = info[1];
+    if($("weatherHumidity")) $("weatherHumidity").textContent = c.relative_humidity_2m;
+    if($("weatherWind")) $("weatherWind").textContent = Math.round(c.wind_speed_10m);
+    
+  }catch(e){
+    console.log("Weather error", e);
+    if($("weatherDesc")) $("weatherDesc").textContent = "موسم لوڈ نہیں ہو سکا";
+  }
+}
+
 /* Welcome hide moved outside module */
 
 
@@ -4234,6 +4384,7 @@ setTimeout(()=>{
  loadJobs();
  loadNotices();
  loadTownUpdates();
+ loadDulleWalaWeather();
 
 },1000);
 
