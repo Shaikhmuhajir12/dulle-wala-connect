@@ -929,9 +929,10 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
  font-size:11px;
 }
 .welcome-hide{
- opacity:0;
- visibility:hidden;
- pointer-events:none;
+ opacity:0 !important;
+ visibility:hidden !important;
+ pointer-events:none !important;
+ display:none !important;
 }
 
 .account-required{
@@ -4191,15 +4192,25 @@ if(
    5 SECOND ANIMATION
 ===================================================== */
 
-setTimeout(()=>{
-
- $("welcomeScreen")
-  .classList.add("welcome-hide");
-
- // Account Required اب زبردستی نہیں کھلے گا
- // صرف form submit کرنے پر requireUser() چلے گا
-
-},5200);
+/* =====================================================
+   WELCOME PAGE - Reliable Hide
+===================================================== */
+setTimeout(function(){
+  try {
+    var welcome = document.getElementById("welcomeScreen");
+    if(welcome){
+      welcome.classList.add("welcome-hide");
+      // Extra safety after transition
+      setTimeout(function(){
+        welcome.style.display = "none";
+      }, 900);
+    }
+  } catch(e){
+    console.log("Welcome hide error:", e);
+    var w = document.getElementById("welcomeScreen");
+    if(w) w.style.display = "none";
+  }
+}, 5000);
 
 
 /* =====================================================
