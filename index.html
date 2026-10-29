@@ -633,6 +633,35 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
   background:linear-gradient(135deg,#000,#222);
 }
 
+/* ===== MUSIC BUTTON ===== */
+.float-music{
+  position:fixed;
+  right:16px;
+  bottom:80px;
+  z-index:95;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:0;
+  background:linear-gradient(135deg,#087443,#0b9655);
+  color:white;
+  font-size:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.float-music:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+}
+.float-music.off{
+  background:linear-gradient(135deg,#555,#333);
+  opacity:0.85;
+}
+
 .float-wa{
  position:fixed;
  left:15px;
@@ -1963,8 +1992,6 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 </main>
 
 
-<!-- FOOTER -->
-
 <!-- =====================================================
      DULLE WALA WEATHER + LIVE LOCATION
 ===================================================== -->
@@ -2057,15 +2084,21 @@ footer p,footer a{color:#d6e6dc;font-size:10px}
 
 
 <!-- =====================================================
-     WHATSAPP
-     
-     IMPORTANT:
-     نیچے 923XXXXXXXXX کو اپنے اصل WhatsApp نمبر سے تبدیل کریں۔
+     BACKGROUND MUSIC
 ===================================================== -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="Nit Khair Manga mp3.mp3" type="audio/mpeg">
+</audio>
+
 
 <!-- Floating Admin Button (subtle, corner) -->
 <button id="adminLoginBtn" class="float-admin" title="Admin Login">
   🔐
+</button>
+
+<!-- Floating Music Toggle Button -->
+<button id="musicToggleBtn" class="float-music" title="Music On/Off">
+  🎵
 </button>
 
 <a class="float-wa"
@@ -2524,9 +2557,6 @@ const ADMIN_UID="CbJESrWxFEdxa9Mm2gi1P0dr6sl1";
 
 /* =====================================================
    IMPORTANT CONTACT
-   یہاں اپنا WhatsApp number ڈالیں
-   Example:
-   923432752543
 ===================================================== */
 
 const ADMIN_WHATSAPP="923432752543";
@@ -4675,6 +4705,73 @@ if(
  };
 
 }
+
+
+/* =====================================================
+   BACKGROUND MUSIC SYSTEM
+===================================================== */
+const bgMusic = $("bgMusic");
+const musicBtn = $("musicToggleBtn");
+
+let musicEnabled = localStorage.getItem("dwc_music") !== "off";
+
+function updateMusicButton(){
+  if(musicEnabled){
+    musicBtn.textContent = "🎵";
+    musicBtn.classList.remove("off");
+    musicBtn.title = "Music Off کریں";
+  }else{
+    musicBtn.textContent = "🔇";
+    musicBtn.classList.add("off");
+    musicBtn.title = "Music On کریں";
+  }
+}
+
+function playMusic(){
+  if(!musicEnabled) return;
+  bgMusic.volume = 0.45; // soft volume
+  const playPromise = bgMusic.play();
+  if(playPromise !== undefined){
+    playPromise.catch(()=>{
+      // Autoplay blocked by browser — will start on first click
+      console.log("Autoplay blocked, waiting for user interaction");
+    });
+  }
+}
+
+function pauseMusic(){
+  bgMusic.pause();
+}
+
+musicBtn.onclick = ()=>{
+  musicEnabled = !musicEnabled;
+  localStorage.setItem("dwc_music", musicEnabled ? "on" : "off");
+  updateMusicButton();
+  
+  if(musicEnabled){
+    playMusic();
+    showToast("🎵 Music On");
+  }else{
+    pauseMusic();
+    showToast("🔇 Music Off");
+  }
+};
+
+// Start music after welcome screen
+setTimeout(()=>{
+  updateMusicButton();
+  if(musicEnabled){
+    playMusic();
+  }
+}, 5200);
+
+// Also try on any user click (for browsers that block autoplay)
+document.body.addEventListener("click", function once(){
+  if(musicEnabled && bgMusic.paused){
+    playMusic();
+  }
+  document.body.removeEventListener("click", once);
+}, {once:true});
 
 
 /* =====================================================
